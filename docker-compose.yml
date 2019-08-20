@@ -1,0 +1,35 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    env_file:
+      - ./.env
+    volumes:
+      - .:/usr/src/asoviva
+      - bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - chrome
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-dubnium
+    ports:
+      - 4444:4444
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - "db:/var/lib/postgresql/data"
+volumes:
+  db:
+    driver: local
+  bundle:
+    driver: local
