@@ -1,4 +1,22 @@
 //= require_tree
 //= reqire_self
 @import "materialize";
-@import "material_icons"
+@import "material_icons";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+  flex: 1 0 auto;
+}
+
+.border-footer {
+  border: 1px #eee solid;
+  }
+
+.footer-text {
+  padding-bottom: 10px;
+}
