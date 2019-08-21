@@ -57,3 +57,21 @@ margin-left: 1rem;
   @extend .btn;
   width: 80%;
 }
+
+.fixed-action-btn {
+  right: 2rem;
+  bottom: 5rem;
+}
+
+.datepicker-date-display {
+  background-color: #ffb300;
+}
+
+.datepicker-table td.is-selected {
+  background-color: #ffb300;
+  color: #fff;
+}
+
+.datepicker-table td.is-today {
+  color: #ffb300;
+}
