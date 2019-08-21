@@ -7,10 +7,19 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
   }
 
 main {
   flex: 1 0 auto;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .border-footer {
@@ -19,4 +28,32 @@ main {
 
 .footer-text {
   padding-bottom: 10px;
+}
+
+
+.separator-text {
+display: flex;
+align-items: center;
+color: #999;
+}
+.separator-text:before,
+.separator-text:after {
+border-top: 1px solid #eee;
+content: "";
+flex-grow: 1;
+}
+.separator-text:before {
+margin-right: 1rem;
+}
+.separator-text:after {
+margin-left: 1rem;
+}
+
+.btn {
+  text-transform: none;
+}
+
+.btn-long {
+  @extend .btn;
+  width: 80%;
 }
