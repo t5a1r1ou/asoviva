@@ -27,7 +27,7 @@ RUN \
   cp ~/.gemrc /etc/gemrc && \
   chmod uog+r /etc/gemrc && \
   bundle config --global jobs 4 && \
-  bundle install && \
+  bundle install --path vendor/bundle && \
   rm -rf ~/.gem
 
 COPY . $APP_ROOT
