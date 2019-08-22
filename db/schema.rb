@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_120442) do
   create_table "posts", force: :cascade do |t|
     t.string "name", limit: 20, null: false
     t.text "description", null: false
-    t.string "area", null: false
+    t.integer "area", null: false
     t.integer "count"
     t.date "deadline"
     t.datetime "created_at", null: false

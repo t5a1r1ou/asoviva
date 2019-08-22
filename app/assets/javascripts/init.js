@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
 
   var sidenav = document.querySelectorAll('.sidenav');
-   var instances = M.Sidenav.init(sidenav);
+   var sidenav_instances = M.Sidenav.init(sidenav);
 
    var post_modal = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(post_modal);
+    var postmodal_instances = M.Modal.init(post_modal);
 
     var today = new Date
     var datepicker = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(datepicker,
+    var datepicker_instances = M.Datepicker.init(datepicker,
     {
       autoClose: true,
       format: "yyyy/mm/dd",
@@ -26,4 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
         },
       showClearBtn: true
     });
+
+    var select = document.querySelectorAll('select');
+    var select_instances = M.FormSelect.init(select);
+
+    var character_counter_text = document.querySelector('#input_name');
+
+    M.CharacterCounter.init(character_counter_text);
+
+    var character_counter_textarea = document.querySelector('#area_description');
+
+    M.CharacterCounter.init(character_counter_textarea);
  });

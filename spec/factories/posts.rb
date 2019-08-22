@@ -1,9 +1,11 @@
+require 'date'
+
 FactoryBot.define do
   factory :post do
-    name "MyString"
-    description "MyText"
-    area "MyString"
+    name "My Event"
+    description "My Description"
+    area 3
     count 1
-    deadline "2019-08-21"
+    deadline Date.today
   end
 end
