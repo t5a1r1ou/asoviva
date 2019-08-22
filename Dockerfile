@@ -27,9 +27,9 @@ RUN \
   cp ~/.gemrc /etc/gemrc && \
   chmod uog+r /etc/gemrc && \
   bundle config --global jobs 4 && \
-  bundle install --path vendor/bundle && \
+  bundle install && \
   rm -rf ~/.gem
 
 COPY . $APP_ROOT
 
-CMD ["rails", "s", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
