@@ -6,16 +6,16 @@
   <div class="modal-content">
     <h4>新規投稿</h4>
     <div class="row">
-      <%= form_with class: "col s12", model: @post do |f| %>
+      <%= form_with url: posts_path, class: "col s12", local: true, model: @post do |f| %>
       <div class="row">
         <div class="input-field col s12">
-          <%= f.text_field :name, id: "name" %>
+          <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 20  %>
           <%= f.label :name %>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <%= f.text_area :description, class: "materialize-textarea",  rows: 5 %>
+          <%= f.text_area :description, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140 %>
           <%= f.label :description %>
         </div>
       </div>
@@ -25,7 +25,13 @@
           <%= f.label :date %>
         </div>
         <div class="input-field col s6">
-          <%= f.select :post, options_for_select(Post.areas) %>
+          <%= f.number_field :count %>
+          <%= f.label :count %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.select :area, options_for_select(Post.areas.keys) %>
           <%= f.label :area %>
         </div>
       </div>

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
 
   var sidenav = document.querySelectorAll('.sidenav');
    var sidenav_instances = M.Sidenav.init(sidenav);
@@ -29,4 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var select = document.querySelectorAll('select');
     var select_instances = M.FormSelect.init(select);
+
+    var character_counter_text = document.querySelector('#input_name');
+
+    M.CharacterCounter.init(character_counter_text);
+
+    var character_counter_textarea = document.querySelector('#area_description');
+
+    M.CharacterCounter.init(character_counter_textarea);
  });

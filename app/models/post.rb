@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :area, presence: true
+  validates :description, length: { maximum: 140 }
   enum area: {
     '北海道' => 0,
     '東北' => 1,
