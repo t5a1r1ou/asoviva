@@ -33,4 +33,4 @@ RUN \
 
 COPY . $APP_ROOT
 
-CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0"]
