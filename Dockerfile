@@ -21,6 +21,7 @@ RUN apk update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile $APP_ROOT
+COPY Gemfile.lock $APP_ROOT
 
 RUN \
   echo 'gem: --no-document' >> ~/.gemrc && \
@@ -32,4 +33,4 @@ RUN \
 
 COPY . $APP_ROOT
 
-CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
