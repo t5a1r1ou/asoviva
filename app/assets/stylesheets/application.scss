@@ -4,12 +4,12 @@
 @import "material_icons";
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
-    padding-bottom: 2rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 2rem;
   }
 
 main {
@@ -32,21 +32,25 @@ footer {
 
 
 .separator-text {
-display: flex;
-align-items: center;
-color: #999;
-}
-.separator-text:before,
-.separator-text:after {
-border-top: 1px solid #eee;
-content: "";
-flex-grow: 1;
+  display: flex;
+  align-items: center;
+  color: #999;
 }
 .separator-text:before {
-margin-right: 1rem;
+  border-top: 1px solid #eee;
+  content: "";
+  flex-grow: 1;
 }
 .separator-text:after {
-margin-left: 1rem;
+  border-top: 1px solid #eee;
+  content: "";
+  flex-grow: 1;
+}
+.separator-text:before {
+  margin-right: 1rem;
+}
+.separator-text:after {
+  margin-left: 1rem;
 }
 
 .btn {
