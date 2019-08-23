@@ -18,7 +18,7 @@ ja:
         updated_at: 更新日時
         area: 場所
         count: 集めたい人数
-        date: 日時
+        date: 日付
   date:
     abbr_day_names:
     - 日
