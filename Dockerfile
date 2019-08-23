@@ -21,6 +21,7 @@ RUN apk update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile $APP_ROOT
+COPY Gemfile.lock $APP_ROOT
 
 RUN \
   echo 'gem: --no-document' >> ~/.gemrc && \
