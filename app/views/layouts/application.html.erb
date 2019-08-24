@@ -13,22 +13,27 @@
 
   <body>
     <nav class="amber darken-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">asoviva!</a>
+      <div class="nav-wrapper container">
+        <%= link_to 'asoviva!', root_path, id: "logo-container", class: "brand-logo" %>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">ログイン</a></li>
+          <li>
+            <%= link_to '一覧', posts_path %>
+          </li>
         </ul>
         <ul id="nav-mobile" class="sidenav">
-          <li class="amber darken-1"><a class="white-text" href="#">asoviva!</a></li>
-          <li><a href="#">ログイン</a></li>
+          <li class="amber darken-1">
+            <%= link_to 'asoviva!', root_path, class: "white-text" %>
+          </li>
+          <li>
+            <%= link_to '一覧', posts_path %>
+          </li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>
 
-    <div class="container" id="yield-container">
-      <%= render "layouts/toast" %>
-      <%= yield %>
-    </div>
+    <%= render "layouts/toast" %>
+    <%= yield %>
 
       <footer class="page-footer grey lighten-5 border-footer">
         <div class="container grey-text text-ligten-3 center footer-text light">

@@ -33,4 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var character_counter_textarea = document.querySelector('#area_description');
     M.CharacterCounter.init(character_counter_textarea);
+
+    var collapsibles = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(collapsibles);
+
+    var fixedmenubtn = document.querySelectorAll('.fixed-action-btn_menu');
+    var instances = M.FloatingActionButton.init(fixedmenubtn, {
+      direction: 'left',
+      hoverEnabled: false
+    });
   });
