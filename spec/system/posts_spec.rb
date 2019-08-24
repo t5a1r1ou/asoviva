@@ -8,7 +8,7 @@ RSpec.describe 'Posts', type: :system do
       expect(page).to have_content '新規投稿'
       fill_in "post[name]", with: "ロッキンジャパン"
       fill_in "post[description]", with: "あいみょん見たい"
-      fill_in "post[date]", with: "2019-09-01"
+      fill_in "post[deadline]", with: "2019-09-01"
       fill_in "post[count]", with: "3"
       click_button "commit"
       expect(page).to have_content "ロッキンジャパン"

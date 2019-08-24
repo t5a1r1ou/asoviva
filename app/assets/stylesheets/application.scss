@@ -3,6 +3,14 @@
 @import "materialize";
 @import "material_icons";
 
+$tab: 601px;
+
+@mixin tab {
+  @media only screen and (min-width: ($tab)) {
+    @content;
+  }
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -78,4 +86,13 @@ footer {
 
 .datepicker-table td.is-today {
   color: #ffb300;
+}
+
+#toast-container {
+  position: fixed;
+  top: 48px;
+  bottom: auto !important;
+  @include tab {
+    top: 56px;
+  }
 }

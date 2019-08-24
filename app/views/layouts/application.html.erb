@@ -25,11 +25,9 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="yield-container">
+      <%= render "layouts/toast" %>
       <%= yield %>
-      <% if flash.notice.present? %>
-        <%= flash.notice %>
-      <% end %>
     </div>
 
       <footer class="page-footer grey lighten-5 border-footer">
