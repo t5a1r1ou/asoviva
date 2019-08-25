@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root "static_pages#home"
-  resources :posts
+  resources :posts, except: [:new]
 end

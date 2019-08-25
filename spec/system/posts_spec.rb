@@ -27,7 +27,7 @@ RSpec.describe 'Posts', type: :system do
         click_button "commit"
         expect(page).to have_content "mode_edit"
         expect(page).to have_content "どこ行きたい？を入力してください"
-        expect(page).to have_content "エリアが初期化されています。ご注意ください"
+        expect(page).to have_content "エリア、カテゴリが初期化されています。ご注意ください"
         click_link 'mode_edit'
         expect(page).to have_content "あいみょん見たい"
       end
@@ -55,7 +55,7 @@ RSpec.describe 'Posts', type: :system do
         fill_in "post[name]", with: ""
         click_button "commit"
         expect(page).to have_content "どこ行きたい？を入力してください"
-        expect(page).to have_content "エリアが初期化されています。ご注意ください"
+        expect(page).to have_content "エリア、カテゴリが初期化されています。ご注意ください"
         expect(page).to have_content "プールで遊ぶ"
       end
     end
