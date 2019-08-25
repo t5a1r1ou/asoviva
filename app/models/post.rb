@@ -1,11 +1,13 @@
 class Post < ApplicationRecord
+  default_scope -> { order(created_at: :desc)}
+
   validates :name, presence: true, length: { maximum: 20 }
   validates :area, presence: true
   validates :description, length: { maximum: 140 }
   validates :count, numericality: {
     only_integer: true,
-    less_than: 20,
-    allow_nil: true
+    less_than_or_equal_to: 20,
+    greater_than: 0,
   }
   validates :deadline, presence: true
   validate :deadline_future
@@ -23,6 +25,14 @@ class Post < ApplicationRecord
     '九州' => 7,
     '沖縄' => 8
   }
+
+  def count_about
+    case self.count
+    when 1 then "1人"
+    when (2..4) then "2~4人"
+    else "ワイワイ"
+    end
+  end
 
   private
 

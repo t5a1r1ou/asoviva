@@ -3,6 +3,21 @@
 @import "materialize";
 @import "material_icons";
 
+$tab: 601px;
+$pc: 1000px;
+
+@mixin tab {
+  @media only screen and (min-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media only screen and (min-width: ($tab)) {
+    @content;
+  }
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -18,8 +33,9 @@ main {
 
 footer {
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  z-index: 100;
 }
 
 .border-footer {
@@ -30,29 +46,6 @@ footer {
   padding-bottom: 10px;
 }
 
-
-.separator-text {
-  display: flex;
-  align-items: center;
-  color: #999;
-}
-.separator-text:before {
-  border-top: 1px solid #eee;
-  content: "";
-  flex-grow: 1;
-}
-.separator-text:after {
-  border-top: 1px solid #eee;
-  content: "";
-  flex-grow: 1;
-}
-.separator-text:before {
-  margin-right: 1rem;
-}
-.separator-text:after {
-  margin-left: 1rem;
-}
-
 .btn {
   text-transform: none;
 }
@@ -60,6 +53,11 @@ footer {
 .btn-long {
   @extend .btn;
   width: 80%;
+}
+
+.title-suffix {
+  font-size: 10px;
+  margin-left: 1em;
 }
 
 .fixed-action-btn {
@@ -78,4 +76,31 @@ footer {
 
 .datepicker-table td.is-today {
   color: #ffb300;
+}
+
+#toast-container {
+  position: fixed;
+  top: 48px;
+  bottom: auto !important;
+  @include tab {
+    top: 56px;
+  }
+}
+
+.btn-floating.halfway-fab {
+  top: 95px;
+}
+
+.fixed-action-btn_write {
+  @extend .fixed-action-btn;
+}
+
+.fixed-action-btn_menu {
+  @extend .fixed-action-btn;
+  position: absolute;
+  top: 21px;
+}
+
+.direction-left.fixed-action-btn_menu ul {
+  top: 93%;
 }

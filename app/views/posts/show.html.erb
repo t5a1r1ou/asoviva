@@ -1,1 +1,29 @@
-index
+<div class="container">
+  <div class="card indigo">
+    <div class="fixed-action-btn_menu">
+      <a id="post_menu_btn" class="btn-floating halfway-fab forshow waves-effect waves-light green"><i class="material-icons">menu</i></a>
+      <ul>
+        <li>
+        <%= link_to edit_post_path(@post), class: "btn-floating red" do %>
+          <i class="material-icons">edit</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to @post, method: :delete, data: { confirm: "#{@post.name}に行く予定を削除します。よろしいですか？"}, class: "btn-floating yellow" do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      </li>
+      </ul>
+    </div>
+    <div class="card-content white">
+      <span class="card-title"><%= @post.name %><span class="title-suffix">に行きたい！</span></span>
+      <p><%= Post.human_attribute_name(:deadline) %>:<%= @post.deadline.to_s(:ymd) %></p>
+      <p><%= Post.human_attribute_name(:count) %>:<%= @post.count_about %></p>
+
+    </div>
+    <div class="card-action">
+      <p class="amber-text">詳しい内容</p>
+      <p class="white-text"><%= @post.description %></p>
+    </div>
+  </div>
+</div>

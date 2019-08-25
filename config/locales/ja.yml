@@ -13,12 +13,12 @@ ja:
       post:
         id: ID
         name: どこ行きたい？
-        description: 詳しい説明
+        description: 何する？（任意）
         created_at: 登録日時
         updated_at: 更新日時
-        area: 場所
-        count: 集めたい人数
-        date: 日付
+        area: エリア
+        count: 何人で？
+        deadline: いつまでに？
   date:
     abbr_day_names:
     - 日

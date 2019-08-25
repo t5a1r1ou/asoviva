@@ -5,5 +5,6 @@ FactoryBot.define do
     description "新作の映画を見たい"
     area 3
     deadline Date.today + 1
+    count 2
   end
 end

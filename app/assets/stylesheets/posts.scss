@@ -1,3 +1,41 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$tab: 601px;
+
+@mixin tab {
+  @media only screen and (min-width: ($tab)) {
+    @content;
+  }
+}
+
+.cards-container {
+  @include tab {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.card-container {
+  margin: 0 1rem 1rem;
+  @include tab {
+    width: 30%;
+  }
+}
+
+.card-descriptions {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination li.active {
+  background-color: #3f51b5 !important;
+}
+
+.pagenation-height {
+  height: 100px;
+}

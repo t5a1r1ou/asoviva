@@ -1,0 +1,12 @@
+<% if flash.present? %>
+  <% flash.each do |type, msg| %>
+    <% color = 'teal lighten-1' if type == 'notice' %>
+    <% color = 'amber darken-1' if type == 'alert' %>
+
+    <%= javascript_tag "M.toast({
+      html: '#{msg}',
+      classes: '#{color}',
+      displayLength: 2000
+      });" %>
+  <% end %>
+<% end %>
