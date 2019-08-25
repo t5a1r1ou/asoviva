@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
       @posts = Post.page(params[:page]).per(9)
-      flash.now[:alert] = "エリアが初期化されています。ご注意ください"
+      flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
       render :index
     end
   end
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
     @post = Post.find(params[:id])
   end
 
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to posts_url, notice: "#{@post.name}に行く予定を更新しました！"
     else
-      flash.now[:alert] = "エリアが初期化されています。ご注意ください"
+      flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
       render :edit
     end
   end
@@ -42,6 +43,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :description, :area, :count, :deadline)
+    params.require(:post).permit(:name, :description, :area, :count, :deadline, :category)
   end
 end

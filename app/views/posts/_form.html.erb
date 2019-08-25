@@ -3,9 +3,13 @@
   <h4><%= title %></h4>
   <%= form_with url: path_default, class: "col s12", local: true, model: post do |f| %>
   <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s8">
       <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 20  %>
       <%= f.label :name %>
+    </div>
+    <div class="input-field col s4">
+      <%= f.select :category, options_for_select(Post.categories.keys) %>
+      <%= f.label :category %>
     </div>
   </div>
   <div class="row">

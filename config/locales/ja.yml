@@ -19,6 +19,7 @@ ja:
         area: エリア
         count: 何人で？
         deadline: いつまでに？
+        category: カテゴリ
   date:
     abbr_day_names:
     - 日
