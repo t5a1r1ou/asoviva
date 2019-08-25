@@ -1,0 +1,10 @@
+<% if @post.errors.present? %>
+<% @post.errors.full_messages.each do |msg| %>
+
+  <%= javascript_tag "M.toast({
+    html: '#{msg}',
+    classes: 'red ',
+    displayLength: 2000
+    });" %>
+  <% end %>
+<% end %>
