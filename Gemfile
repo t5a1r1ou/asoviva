@@ -27,10 +27,6 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem 'jquery-rails'
 gem 'devise'
-gem 'devise_materialize'
-gem 'devise-i18n'
-gem 'devise-i18n-views'
-gem 'omniauth'
 gem 'kaminari'
 
 group :development, :test do
