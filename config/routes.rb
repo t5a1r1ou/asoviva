@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  resources :users, only: [:index, :show]
   resources :posts, except: [:new]
 end
