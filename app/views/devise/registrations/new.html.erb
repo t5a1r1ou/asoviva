@@ -1,47 +1,46 @@
-<div class="row login-form">
-  <div class="col s12 m6">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span class="card-title center">新規登録</span>
-        <div class="divider"></div>
-        <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
-          <% if devise_error_messages? || alert %>
-            <div class="form-errors red lighten-1">
-              <%= devise_error_messages! %>
-              <%= alert %>
-            </div>
-          <% end %>
-          <div class="form-inputs row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">email</i>
-              <%= f.email_field :email, autofocus: true, required: true %>
-              <%= f.label :email %>
-            </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">lock</i>
-              <%= f.password_field :password, autocomplete: "off", required: true %>
-              <%= f.label :password %>
-              <span class="hint-text">
-                <%= @minimum_password_length %>
-                文字以上必要です
-              </span>
-            </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">lock</i>
-              <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
-              <%= f.label :password_confirmation %>
-            </div>
-          </div>
-          <div class="form-actions center">
-            <%= f.submit "登録する！", class: "btn white-text waves-effect" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="card-action">
-        <div class="devise-links">
-          <%= render "devise/shared/links" %>
-        </div>
+<%= render "layouts/toast" %>
+<div class="container">
+  <h3>新規登録</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
     </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上必須" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="actions row">
+      <div class="input-field col s12">
+        <%= f.submit '登録', class: "btn wave-effect waves-light amber darken-1" %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="fix-pb">
+    <%= render "devise/shared/links" %>
   </div>
 </div>
