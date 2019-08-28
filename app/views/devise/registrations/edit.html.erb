@@ -54,7 +54,7 @@
   <h4>アカウント削除</h4>
 
   <div class="row fix-pb">
-    <p>アカウント削除は <%= button_to "こちら", registration_path(resource_name), data: { confirm: "アカウントを削除します。よろしいですか？" }, method: :delete, class: "btn wave-effect waves-light red" %></p>
+    <p>アカウント削除は <%= button_to "こちら", registration_path(resource_name), data: { confirm: "アカウントを削除します。よろしいですか？" }, method: :delete, class: "btn wave-effect waves-light red", id: "delete_btn" %></p>
 
     <%= link_to "戻る", :back %>
   </div>
