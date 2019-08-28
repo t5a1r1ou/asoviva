@@ -15,11 +15,6 @@ test:
   <<: *default
   database: app_test
 
-production:
-     encoding: utf8
-     adapter: postgresql
-     port: ENV['DATABASE_PORT_PRO']
-     username: ENV['DATABASE_USER_PRO']
-     host: ENV['DATABASE_HOST_PRO']
-     database: ENV['DATABASE_NAME_PRO']
-     password: ENV['DATABASE_PASSWORD_PRO']
+test:
+  <<: *default
+  database: app_production
