@@ -1,8 +1,0 @@
-<div class="fixed-action-btn_write">
-  <a class="waves-effect waves-light modal-trigger btn-floating btn-large red" href="#create_post"><i class="large material-icons">mode_edit</i></a>
-</div>
-<div id="create_post" class="modal">
-  <div class="modal-content">
-    <%= render partial: 'form', locals: { post: @post, title: "新規登録", path_default: posts_path } %>
-  </div>
-</div>
