@@ -15,6 +15,7 @@ RUN apk update && \
     alpine-sdk \
     postgresql-client \
     postgresql-dev \
+    imagemagick \
     nodejs \
     yarn && \
     rm -rf /var/lib/apt/lists/*
