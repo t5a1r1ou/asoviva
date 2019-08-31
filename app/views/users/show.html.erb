@@ -15,7 +15,7 @@
   <% if not @user.posts.empty? %>
     <h4><%= @user.name %>の投稿一覧</h4>
     <div class="cards-container">
-      <%= render partial: "posts/posts_cards", locals: { posts: @user.posts } %>
+      <%= render partial: "posts/posts_cards", locals: { posts: @user.posts, bool: false } %>
     </div>
   <% else %>
     <p>まだ投稿がありません</p>
