@@ -4,5 +4,11 @@ FactoryBot.define do
     email 'test@example.com'
     password 'password'
     password_confirmation 'password'
+    gender 0
+    area 4
+
+    trait :with_avatar do
+      avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test_man.png')) }
+    end
   end
 end

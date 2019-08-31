@@ -1,20 +1,19 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_post, except: [:index, :create]
 
   def index
     @post = Post.new
     @posts = Post.page(params[:page]).per(9)
-    @user = User.new
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
-      @posts = Post.page(params[:page]).per(9)
       flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
+      @posts = Post.page(params[:page]).per(9)
       render :index
     end
   end

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  let(:post) { FactoryBot.build(:post) }
+  let(:post) { FactoryBot.build(:post, user_id: user.id) }
+  let(:post_desc_nil) { FactoryBot.create(:post, :desc_nil, user_id: user.id) }
+  let!(:user) { FactoryBot.create(:user) }
 
   context '名称、場所、日時が入力されている新規登録' do
     it '成功する' do
@@ -13,6 +15,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :area }
   it { is_expected.to validate_presence_of :deadline }
+  it { is_expected.to validate_presence_of :category }
   it { is_expected.to validate_numericality_of(:count).only_integer }
 
   it { is_expected.to validate_length_of(:name).is_at_most(20) }
@@ -34,15 +37,6 @@ RSpec.describe Post, type: :model do
       it '失敗する' do
         post.deadline = Date.today - 1
         expect(post).to_not be_valid
-      end
-    end
-  end
-
-  describe 'descriptionのコールバック' do
-    context 'descriptionをnilで登録した時' do
-      it 'デフォルトの値が入る' do
-        post = FactoryBot.create(:post, description: nil)
-        expect(post.description).to eq 'とりあえず遊びたーい'
       end
     end
   end
@@ -102,7 +96,7 @@ RSpec.describe Post, type: :model do
         expect(post.category_color).to eq 'indigo lighten-1'
       end
     end
-    
+
     context "post.categoryが'ランチ'のとき" do
       it 'returns teal lighten-1' do
         post.category = 'ランチ'

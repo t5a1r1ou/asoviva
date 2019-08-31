@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_120743) do
+ActiveRecord::Schema.define(version: 2019_08_31_145511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,15 @@ ActiveRecord::Schema.define(version: 2019_08_29_120743) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name", limit: 20, null: false
-    t.text "description", null: false
+    t.text "description", default: "とりあえず遊びたーい", null: false
     t.integer "area", null: false
     t.integer "count", null: false
     t.date "deadline", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category", default: 1, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +63,9 @@ ActiveRecord::Schema.define(version: 2019_08_29_120743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
+    t.integer "gender", default: 0, null: false
+    t.text "profile"
+    t.integer "area", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

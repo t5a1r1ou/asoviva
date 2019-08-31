@@ -13,8 +13,6 @@ class Post < ApplicationRecord
   validates :deadline, presence: true
   validate :deadline_future
 
-  before_validation :set_description_default
-
   enum area: {
     '北海道' => 0,
     '東北' => 1,
@@ -34,6 +32,9 @@ class Post < ApplicationRecord
     'ランチ' => 4
   }
 
+  belongs_to :user
+
+
   def count_about
     case count
     when 1 then '1人'
@@ -51,13 +52,15 @@ class Post < ApplicationRecord
     end
   end
 
-  private
-
   def deadline_future
     errors.add(:deadline, 'には今日以降の日付を入力してください') if deadline && deadline < Date.today
   end
 
-  def set_description_default
-    self.description = 'とりあえず遊びたーい' if description.blank?
+  def long_title_class
+    'name_long' if name.split(//).size > 8
+  end
+
+  def description_digest
+    description.truncate(12)
   end
 end
