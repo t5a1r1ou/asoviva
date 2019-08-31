@@ -21,13 +21,10 @@
           </li>
           <% if user_signed_in? %>
           <li>
-            <%= link_to 'ユーザー編集', edit_user_registration_path %>
+            <%= link_to 'ユーザー一覧', users_path %>
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-          </li>
-          <li>
-            <%= current_user.name %>がログイン中
           </li>
           <% else %>
           <li>
@@ -47,7 +44,7 @@
           </li>
           <% if user_signed_in? %>
           <li>
-            <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+            <%= link_to 'ユーザー一覧', users_path %>
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
@@ -64,6 +61,15 @@
           </li>
           <% end %>
         </ul>
+        <% if user_signed_in? %>
+        <ul class="right">
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag current_user.user_icon, class: "user-icon" %>
+            <% end %>
+          </li>
+        </ul>
+        <% end %>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>

@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :system do
         click_button 'commit'
         expect(page).to have_content "アカウント登録が完了しました"
         expect(page).to have_content "mode_edit"
-        expect(page).to have_content "nakaiがログイン中"
+        expect(page).to have_css ".user-icon"
       end
     end
 
@@ -41,11 +41,12 @@ RSpec.describe 'Users', type: :system do
         click_button 'commit'
         expect(page).to have_content "アカウント情報を変更しました"
         expect(page).to have_content "mode_edit"
-        expect(page).to have_content "nakaiがログイン中"
+        expect(page).to have_css ".user-icon"
       end
+    end
 
       context '失敗したとき' do
-        it "編集画面が再度描写され、入力されていたデータが残っている", js: true do
+        it "編集画面が再度描写され、", js: true do
           sign_in user
           visit edit_user_registration_path
           fill_in 'user[name]', with: "nakai"
@@ -70,4 +71,3 @@ RSpec.describe 'Users', type: :system do
       end
     end
   end
-end

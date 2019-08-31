@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :system do
 
   let(:user) { FactoryBot.create(:user) }
-  let!(:post) { FactoryBot.create(:post) }
+  let!(:post) { FactoryBot.create(:post, user_id: user.id) }
 
   describe "ポストの作成" do
 

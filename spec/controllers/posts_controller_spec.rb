@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
 
-  let(:post) { FactoryBot.create(:post) }
+  let(:post) { FactoryBot.create(:post, user_id: user.id) }
   let(:user) { FactoryBot.create(:user) }
 
   describe "GET #index" do
@@ -14,6 +14,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
+      sign_in user
       get :show, params: { id: post.id }
       expect(response).to have_http_status(:success)
     end

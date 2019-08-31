@@ -6,9 +6,13 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s6">
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.select :area, options_for_select(User.areas.keys) %>
+        <%= f.label :area %>
       </div>
     </div>
 
@@ -39,7 +43,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <div class="fix-pb">
     <%= render "devise/shared/links" %>
   </div>

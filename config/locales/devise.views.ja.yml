@@ -20,11 +20,15 @@ ja:
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: ユーザー名
+        name: "ユーザー名"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+        avatar: "プロフィール画像"
+        gender: "性別"
+        area: "エリア"
+        profile: "プロフィール文"
     models:
       user: "ユーザー"
   devise:

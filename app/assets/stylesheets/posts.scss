@@ -18,7 +18,7 @@ $tab: 601px;
   }
 }
 
-.card-container {
+.card-container_post {
   margin: 0 1rem 1rem;
   @include tab {
     width: 30%;
@@ -38,4 +38,20 @@ $tab: 601px;
 
 .pagenation-height {
   height: 100px;
+}
+
+.name-icon_box_post {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  margin-top: -1rem;
+  margin-bottom: .5rem;
+  .icon_post {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    visibility: -10%;
+    margin-right: .3rem;
+  }
 }

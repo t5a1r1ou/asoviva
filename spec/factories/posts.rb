@@ -6,5 +6,10 @@ FactoryBot.define do
     area 3
     deadline Date.today + 1
     count 2
+
+    trait :desc_nil do
+      name "テスト"
+    end
+
   end
 end

@@ -1,4 +1,59 @@
-<div class="container">
-  <h1><%= @user.name %></h1>
-  <p>Find me in app/views/users/show.html.erb</p>
+<%= render "layouts/toast" %>
+<%= render "posts/fixedbutton" %>
+<div class="container fix-pb">
+  <div class="name-icon_box_user">
+    <div>
+      <h3><%= @user.name %></h3>
+      <p class="grey-text user_area_text">エリア：<%= @user.area %></p>
+    </div>
+    <%= image_tag @user.user_icon, class: "icon_user" %>
+  </div>
+  <p class="user_profile_text"><%= @user.profile.presence || 'プロフィールが設定されていません' %></p>
+  <% if current_user.id == @user.id %>
+    <%= link_to 'プロフィールを編集する', edit_user_path, class: "btn indigo" %>
+  <% end %>
+  <% if not @user.posts.empty? %>
+    <h4><%= @user.name %>の投稿一覧</h4>
+    <div class="cards-container">
+      <% @user.posts.each do |post| %>
+      <div class="card-container_post">
+        <div class="col s12 m4">
+          <div class="card">
+            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+            <div class="chip chip_position white-text <%= post.category_color %>"><%= post.category %></div>
+            <div class="card-content">
+              <%= link_to post do %>
+              <div class="name-icon_box_post">
+                <%= image_tag post.user.user_icon, class: "icon_post" %><p class="black-text"><%= post.user.name %></p>
+              </div>
+              <span class="card-title black-text <%= post.long_title_class %>">
+                <%= post.name %><span class="title-suffix">に行きたい！</span>
+              </span>
+              <p class="black-text">
+                <%= post.description_digest.presence || 'とりあえず遊びたーい' %>
+              </p>
+              <% end %>
+            </div>
+            <div class="card-action card-descriptions <%= post.category_color %>">
+              <div>
+                <p class="white-text"><%= Post.human_attribute_name(:deadline) %></p>
+                <p class="amber-text darken-4"><%= post.deadline %></p>
+              </div>
+              <div>
+                <p class="white-text"><%= Post.human_attribute_name(:count) %></p>
+                <p class="amber-text darken-4"><%= post.count_about %></p>
+              </div>
+              <div>
+                <p class="white-text"><%= Post.human_attribute_name(:area) %></p>
+                <p class="amber-text darken-4"><%= post.area %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  <% else %>
+    <p>まだ投稿がありません</p>
+  <% end %>
 </div>
