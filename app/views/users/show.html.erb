@@ -15,43 +15,7 @@
   <% if not @user.posts.empty? %>
     <h4><%= @user.name %>の投稿一覧</h4>
     <div class="cards-container">
-      <% @user.posts.each do |post| %>
-      <div class="card-container_post">
-        <div class="col s12 m4">
-          <div class="card">
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite</i></a>
-            <div class="chip chip_position white-text <%= post.category_color %>"><%= post.category %></div>
-            <div class="card-content">
-              <%= link_to post do %>
-              <div class="name-icon_box_post">
-                <%= image_tag post.user.user_icon, class: "icon_post" %><p class="black-text"><%= post.user.name %></p>
-              </div>
-              <span class="card-title black-text <%= post.long_title_class %>">
-                <%= post.name %><span class="title-suffix">に行きたい！</span>
-              </span>
-              <p class="black-text">
-                <%= post.description_digest.presence || 'とりあえず遊びたーい' %>
-              </p>
-              <% end %>
-            </div>
-            <div class="card-action card-descriptions <%= post.category_color %>">
-              <div>
-                <p class="white-text"><%= Post.human_attribute_name(:deadline) %></p>
-                <p class="amber-text darken-4"><%= post.deadline %></p>
-              </div>
-              <div>
-                <p class="white-text"><%= Post.human_attribute_name(:count) %></p>
-                <p class="amber-text darken-4"><%= post.count_about %></p>
-              </div>
-              <div>
-                <p class="white-text"><%= Post.human_attribute_name(:area) %></p>
-                <p class="amber-text darken-4"><%= post.area %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+      <%= render partial: "posts/posts_cards", locals: { posts: @user.posts } %>
     </div>
   <% else %>
     <p>まだ投稿がありません</p>
