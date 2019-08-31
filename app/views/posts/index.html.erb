@@ -5,7 +5,7 @@
 <div class="container">
   <div class="cards-container">
     <% unless @posts.empty? %>
-    <%= render partial: "posts_cards", locals: { posts: @posts } %>
+    <%= render partial: "posts_cards", locals: { posts: @posts, bool: true } %>
     <% else %>
     <p>まだ投稿がありません</p>
   </div>
