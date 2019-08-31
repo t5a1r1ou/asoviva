@@ -5,18 +5,21 @@
 <div class="cards-container container">
   <% unless @posts.empty? %>
   <% @posts.each do |post| %>
-    <div class="card-container">
+    <div class="card-container_post">
       <div class="col s12 m4">
         <div class="card">
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite</i></a>
           <div class="chip chip_position white-text <%= post.category_color %>"><%= post.category %></div>
           <div class="card-content">
             <%= link_to post do %>
-            <span class="card-title black-text">
+            <div class="name-icon_box_post">
+              <%= image_tag post.user.user_icon, class: "icon_post" %><p class="black-text"><%= post.user.name %></p>
+            </div>
+            <span class="card-title black-text <%= post.long_title_class %>">
               <%= post.name %><span class="title-suffix">に行きたい！</span>
             </span>
             <p class="black-text">
-              <%= post.description.truncate(12) %>
+              <%= post.description_digest.presence || 'とりあえず遊びたーい' %>
             </p>
             <% end %>
           </div>

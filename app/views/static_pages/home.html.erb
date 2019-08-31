@@ -1,24 +1,26 @@
 <%= render "layouts/toast" %>
-<div class="section no-pad-bot" id="index-banner">
-  <br><br>
-  <h1 class="header center black-text">asoviva!</h1>
-  <div class="row center grey-text darken-2 light container">
-    <p>asovivaはホニャホニャホニャホニャホニャなサービスです。</p>
-    <p>ホニャホニャホニャホニャホニャホニャホニャホニャホニャホニャ！</p>
+<div class="container">
+  <div class="section no-pad-bot" id="index-banner">
+    <br><br>
+    <h1 class="header center black-text">asoviva!</h1>
+    <div class="row center grey-text darken-2 light container">
+      <p>asovivaはホニャホニャホニャホニャホニャなサービスです。</p>
+      <p>ホニャホニャホニャホニャホニャホニャホニャホニャホニャホニャ！</p>
+    </div>
+    <div class="row center">
+      <%= link_to 'はじめる！', posts_path, class: 'btn-large waves-effect waves-light indigo', id: "start_btn" %>
+    </div>
+    <p class="separator-text row">または</p>
+    <div class="row"></div>
+    <div class="row center">
+      <%= link_to 'メールアドレスでログイン', new_user_session_path, class: "btn-long waves-effect waves-light amber darken-1" %>
+    </div>
+    <div class="row center">
+      <a href="#" class="btn-long waves-effect waves-light red darken-4">Googleでログイン</a>
+    </div>
+    <div class="row center">
+      <a href="#" class="btn-long waves-effect waves-light blue">Twiiterでログイン</a>
+    </div>
+    <div class="row"></div>
   </div>
-  <div class="row center">
-    <%= link_to 'はじめる！', posts_path, class: 'btn-large waves-effect waves-light indigo', id: "start_btn" %>
-  </div>
-  <p class="separator-text row">または</p>
-  <div class="row"></div>
-  <div class="row center">
-    <%= link_to 'メールアドレスでログイン', new_user_session_path, class: "btn-long waves-effect waves-light amber darken-1" %>
-  </div>
-  <div class="row center">
-    <a href="#" class="btn-long waves-effect waves-light red darken-4">Googleでログイン</a>
-  </div>
-  <div class="row center">
-    <a href="#" class="btn-long waves-effect waves-light blue">Twiiterでログイン</a>
-  </div>
-  <div class="row"></div>
 </div>

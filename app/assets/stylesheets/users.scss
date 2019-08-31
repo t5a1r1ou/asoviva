@@ -1,3 +1,33 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.card-container_user {
+  width: 100%;
+}
+
+.name-icon_box_user {
+  display: flex;
+  align-items: center;
+  .icon_users {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .icon_user {
+    width: 80px;
+    height: 80px;
+    margin-left: .8rem;
+    border-radius: 50%;
+  }
+  .user_area_text {
+    margin-top: -1rem;
+  }
+  .users_box {
+    margin-left: .7rem;
+    .users_area_text {
+      font-size: 12px;
+    }
+  }
+}
+
+.user_profile_text {
+  margin-top: -1rem;
+  font-size: 16px;
+}

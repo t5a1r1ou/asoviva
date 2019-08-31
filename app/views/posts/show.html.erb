@@ -1,5 +1,6 @@
 <div class="container">
   <div class="card white">
+    <% if current_user.id == @post.user.id %>
     <div class="fixed-action-btn_menu">
       <a id="post_menu_btn" class="btn-floating halfway-fab forshow waves-effect waves-light green"><i class="material-icons">menu</i></a>
       <ul>
@@ -15,15 +16,16 @@
       </li>
       </ul>
     </div>
+    <% end %>
     <div class="card-content">
-      <span class="card-title"><%= @post.name %><span class="title-suffix">に行きたい！</span></span>
+      <span class="card-title <%= @post.long_title_class %>"><%= @post.name %><span class="title-suffix">に行きたい！</span></span>
       <p><%= Post.human_attribute_name(:deadline) %>:<%= @post.deadline.to_s(:ymd) %></p>
       <p><%= Post.human_attribute_name(:count) %>:<%= @post.count_about %></p>
 
     </div>
     <div class="card-action white-text <%= @post.category_color %>">
       <p class="amber-text darken-4">詳しい内容</p>
-      <p><%= @post.description %></p>
+      <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
     </div>
   </div>
 </div>

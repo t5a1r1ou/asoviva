@@ -56,8 +56,8 @@ footer {
 }
 
 .title-suffix {
-  font-size: 10px;
-  margin-left: 1em;
+  font-size: 6px;
+  margin-left: .8rem;
 }
 
 .fixed-action-btn {
@@ -89,7 +89,7 @@ footer {
 
 // フロートボタンの位置調整
 .btn-floating.halfway-fab {
-  top: 95px;
+  top: 116px;
 }
 
 .fixed-action-btn_write {
@@ -112,10 +112,22 @@ footer {
   right: 10px;
 }
 
+.card-title.name_long {
+    font-size: 13px;
+  }
+
+
+.user-icon {
+  width: 30px;
+  border-radius: 50%;
+  margin-left: .6rem;
+  vertical-align: -16%;
+}
+
 .fix-mt {
   margin-top: 3rem;
 }
 
 .fix-pb {
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
 }
