@@ -33,4 +33,8 @@ RUN \
 
 COPY . $APP_ROOT
 
-CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0"]
+ENV RAILS_ENV production
+
+RUN RAILS_ENV=production bundle exec rails assets:precompile
+RUN rm -f tmp/pids/server.pid
+CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0", "-e", "production"]
