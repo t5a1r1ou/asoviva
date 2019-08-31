@@ -35,6 +35,6 @@ COPY . $APP_ROOT
 
 ENV RAILS_ENV production
 
-RUN SECRET_KEY_BASE=1 RAILS_ENV=production bundle exec rails assets:precompile
+RUN SECRET_KEY_BASE=1 DB_ADAPTER=nulldb bundle exec rails assets:precompile RAILS_ENV=production
 RUN rm -f tmp/pids/server.pid
 CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0", "-e", "production"]
