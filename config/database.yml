@@ -1,5 +1,5 @@
 default: &default
-  adapter: <%= ENV['DB_ADAPTER'] ||= "postgresql" %>
+  adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
@@ -15,6 +15,6 @@ test:
   <<: *default
   database: app_test
 
-test:
+production:
   <<: *default
   database: app_production
