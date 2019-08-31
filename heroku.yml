@@ -1,5 +1,7 @@
 build:
   docker:
     web: Dockerfile
+  config:
+    RAILS_MASTER_KEY: 6175e0d0d402e44c1266591cc65f782e
 run:
   web: bundle exec puma -C config/puma.rb
