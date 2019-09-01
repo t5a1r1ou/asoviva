@@ -24,8 +24,16 @@
   </div>
 
   <div class="actions row fix-mt">
-    <div class="input-field col 12">
-      <%= f.submit 'ログイン', class: "btn wave-effect waves-light amber darken-1" %>
+    <div class="input-field col s12">
+      <div class="row">
+        <%= f.submit 'ログイン', class: "btn wave-effect waves-light amber darken-1" %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= link_to 'Googleでログイン', user_google_omniauth_authorize_path, class: "btn waves-effect waves-light red darken-4" %>
+      </div>
+      <div class="row">
+        <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "btn waves-effect waves-light blue" %>
+      </div>
     </div>
   </div>
-<% end %>
