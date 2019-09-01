@@ -35,3 +35,6 @@
 
 # docker立ち上げスクリプト
 /script/*
+
+# heroku用コンテナビルド
+/heroku.yml

@@ -29,9 +29,13 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+gem 'activerecord-nulldb-adapter'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

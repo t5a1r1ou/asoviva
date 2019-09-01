@@ -16,10 +16,10 @@
       <%= link_to 'メールアドレスでログイン', new_user_session_path, class: "btn-long waves-effect waves-light amber darken-1" %>
     </div>
     <div class="row center">
-      <a href="#" class="btn-long waves-effect waves-light red darken-4">Googleでログイン</a>
+      <%= link_to 'Googleでログイン', user_google_omniauth_authorize_path, class: "btn-long waves-effect waves-light red darken-4" %>
     </div>
     <div class="row center">
-      <a href="#" class="btn-long waves-effect waves-light blue">Twiiterでログイン</a>
+      <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "btn-long waves-effect waves-light blue" %>
     </div>
     <div class="row"></div>
   </div>

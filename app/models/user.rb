@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, and :omniauthable
+  # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: [:google, :twitter]
 
   validates :gender, presence: true
   validates :area, presence: true
@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   enum gender: {
     '設定しない' => 0,
@@ -42,4 +42,28 @@ class User < ApplicationRecord
     end
   end
 
+  protected
+
+  def self.find_for_oauth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    user_name = auth[:info][:name]
+    image_url = auth[:info][:image]
+    email = User.dummy_email(auth)
+    password = Devise.friendly_token[0, 20]
+
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.name = user_name
+      user.email = email
+      user.password = password
+      user.image_url = image_url
+    end
+
+  end
+
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
 end

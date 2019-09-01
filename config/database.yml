@@ -15,6 +15,6 @@ test:
   <<: *default
   database: app_test
 
-test:
+production:
   <<: *default
   database: app_production

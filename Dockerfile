@@ -16,6 +16,7 @@ RUN apk update && \
     alpine-sdk \
     postgresql-client \
     postgresql-dev \
+    imagemagick \
     nodejs \
     yarn && \
     rm -rf /var/lib/apt/lists/*
@@ -33,4 +34,8 @@ RUN \
 
 COPY . $APP_ROOT
 
-CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0"]
+ENV RAILS_ENV production
+
+RUN SECRET_KEY_BASE=1 bundle exec rails assets:precompile RAILS_ENV=production
+RUN rm -f tmp/pids/server.pid
+CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0", "-e", "production"]
