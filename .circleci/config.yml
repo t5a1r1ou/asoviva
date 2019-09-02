@@ -46,9 +46,10 @@ jobs:
       - run:
           name: "push container to registry.heroku.com"
           command: |
-            docker login --username=_ --password=$HEROKU_AUTH_TOKEN
+            echo $HEROKU_AUTH_TOKEN | docker login --username=_ --password-stdin
             registry.heroku.com
             docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+            bash .circleci/heroku-container-release.sh
       - run:
           name: heroku db migrate
           command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
