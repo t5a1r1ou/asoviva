@@ -26,9 +26,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# dotenv-rails
 /.env
 /.env.sample
+/.env.heroku
 
 # macos
 /.DS_Store
