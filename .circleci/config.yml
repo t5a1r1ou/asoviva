@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: setup .env
-          command: echo ${ENV} > ~/.env
+          name: Decode dotenv file
+          command: echo ${ENV} | base64 --decode > /home/circleci/project/.env
       - run:
           name: docker-compose build
           command: docker-compose build
@@ -35,9 +35,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: setup .env
-          command: echo ${ENV} > ~/.env
-      - run:
           name: "build docker image"
           command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
       - run:
@@ -49,8 +46,7 @@ jobs:
       - run:
           name: "push container to registry.heroku.com"
           command: |
-            docker login --username=_ --password=$HEROKU_AUTH_TOKEN
-            registry.heroku.com
+            docker login --username=_ --password=${HEROKU_AUTH_TOKEN} registry.heroku.com
             docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - run:
           name: heroku db migrate
