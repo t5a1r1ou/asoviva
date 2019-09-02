@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: setup .env
+          command: echo ${ENV} > ~/.env
+      - run:
           name: docker-compose build
           command: docker-compose build
       - run:
@@ -31,6 +34,9 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - run:
+          name: setup .env
+          command: echo ${ENV} > ~/.env
       - run:
           name: "build docker image"
           command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
