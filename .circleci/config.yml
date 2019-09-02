@@ -6,9 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-        name: make .env
-        command: touch ~/.env
-      - run:
           name: setup .env
           command: echo ${ENV} > /home/circleci/project/.env
       - run:
