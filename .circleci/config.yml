@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
+        name: make .env
+        command: touch ~/.env
+      - run:
           name: setup .env
-          command: echo ${ENV} > ~/.env
+          command: echo ${ENV} > /home/circleci/project/.env
       - run:
           name: docker-compose build
           command: docker-compose build
