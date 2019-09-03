@@ -10,9 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    flash[:alert] = '次にプロフィールを設定してください'
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -51,9 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_update_path_for(resource)
-  #   posts_path
-  # end
+  def after_sign_up_path_for(resource)
+    edit_user_path(@user)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

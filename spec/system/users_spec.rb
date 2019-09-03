@@ -1,73 +1,32 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :system do
+RSpec.describe "Users", type: :system do
   let(:user) { FactoryBot.create(:user) }
-  describe "ユーザーの作成" do
 
-    context '成功したとき' do
-      it "投稿一覧画面にもどりフラッシュが表示される", js: true do
-        visit new_user_registration_path
-        fill_in 'user[name]', with: "nakai"
-        fill_in 'user[email]', with: "test@example.com"
-        fill_in 'user[password]', with: "password"
-        fill_in 'user[password_confirmation]', with: "password"
+  describe "ユーザープロフィールの更新" do
+    context "有効な値で登録される時" do
+      it "ユーザー詳細画面に遷移し、フラッシュが表示される", js: true do
+        sign_in user
+        visit edit_user_path(user)
+        find(".select-wrapper").click
+        find('span', text: "男性").click
+        fill_in "user[profile]", with: "お腹空きました"
         click_button 'commit'
-        expect(page).to have_content "アカウント登録が完了しました"
-        expect(page).to have_content "mode_edit"
-        expect(page).to have_css ".user-icon"
+        expect(page).to have_content 'Bobのプロフィールを更新しました!'
+        expect(page).to have_content 'お腹空きました'
       end
     end
 
-    context '失敗したとき' do
-      it "ログイン画面が再度描写され、入力されていたデータが残っている", js: true do
-        visit new_user_registration_path
-        fill_in 'user[name]', with: "nakai"
-        fill_in 'user[email]', with: "test@example.com"
+    context "無効な値で登録しようとした時", :focus do
+      it "プロフィール編集画面に戻り、値は保持されている", js: true do
+        sign_in user
+        visit edit_user_path(user)
+        fill_in "user[name]", with: ""
+        fill_in "user[profile]", with: "Bobです"
         click_button 'commit'
-        expect(page).to have_content "パスワードが入力されていません"
-        expect(page).to have_xpath("//input[@value='test@example.com']")
+        expect(page).to have_content 'ユーザー名を入力してください'
+        expect(page).to have_content 'Bobです'
       end
     end
   end
-
-  describe "ユーザーの更新" do
-
-    context '成功したとき' do
-      it "投稿一覧画面にもどりフラッシュが表示される", js: true do
-        sign_in user
-        visit edit_user_registration_path
-        fill_in 'user[name]', with: "nakai"
-        fill_in 'user[current_password]', with: user.password
-        click_button 'commit'
-        expect(page).to have_content "アカウント情報を変更しました"
-        expect(page).to have_content "mode_edit"
-        expect(page).to have_css ".user-icon"
-      end
-    end
-
-      context '失敗したとき' do
-        it "編集画面が再度描写され、", js: true do
-          sign_in user
-          visit edit_user_registration_path
-          fill_in 'user[name]', with: "nakai"
-          click_button 'commit'
-          expect(page).to have_content "現在のパスワードを入力してください"
-          expect(page).to have_xpath("//input[@value='nakai']")
-        end
-      end
-    end
-
-    describe "ユーザーの削除" do
-      it "トップページにリダイレクトして、フラッシュが表示される", js: true do
-        sign_in user
-        visit edit_user_registration_path
-        click_button 'delete_btn'
-        expect(page.driver.browser.switch_to.alert.text).to include "アカウントを削除します"
-        page.driver.browser.switch_to.alert.accept
-        expect(page.driver.browser.switch_to.alert.text).to include "アカウントを削除します"
-        page.driver.browser.switch_to.alert.accept
-        expect(page).to have_content "アカウントを削除しました。またのご利用をお待ちしております"
-        expect(page).to have_css "#start_btn"
-      end
-    end
-  end
+end

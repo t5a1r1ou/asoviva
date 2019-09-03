@@ -1,3 +1,3 @@
-<%= render "posts/post_errors_toast" %>
+<%= render partial: "layouts/errors_toast", locals: { element: @post } %>
 <%= render "layouts/toast" %>
 <%= render partial: 'form', locals: {post: @post, title: '編集', path_default: post_path } %>

@@ -7,6 +7,15 @@ RSpec.describe User, type: :model do
 
   let(:user_attached_image) { FactoryBot.create(:user, :with_avatar, email: 'test_user_2@example.com') }
 
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :email }
+  it { is_expected.to validate_presence_of :gender }
+  it { is_expected.to validate_presence_of :area }
+
+  it { is_expected.to validate_length_of(:name).is_at_most(8) }
+
+  it { is_expected.to validate_length_of(:profile).is_at_most(140) }
+
   describe "user_iconが期待通り実装されている" do
 
     context "プロフィール画像が設定されている時" do

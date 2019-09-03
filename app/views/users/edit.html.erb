@@ -1,10 +1,12 @@
+<%= render 'layouts/toast' %>
+<%= render partial: "layouts/errors_toast", locals: { element: @user } %>
 <div class="row">
   <h4>プロフィール設定</h4>
   <%= form_with url: user_path, class: "col s12", local: true, model: @user do |f| %>
 
   <div class="row">
     <div class="input-field col s8">
-      <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 20  %>
+      <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 8 %>
       <%= f.label :name %>
     </div>
     <div class="input-field col s4">
@@ -15,7 +17,7 @@
 
   <div class="row">
     <div class="input-field col s12">
-      <%= f.text_area :profile, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140, placeholder: "プロフィールを設定してください" %>
+      <%= f.text_area :profile, class: "materialize-textarea validate", id: 'area_description',  rows: 5, :'data-length' => 140, placeholder: "プロフィールを設定してください" %>
       <%= f.label :profile %>
     </div>
   </div>
@@ -33,6 +35,6 @@
     </div>
   </div>
 
-  <%= f.submit '更新', class: "btn-large wave-effect waves-light amber darken-1" %>
+  <%= f.submit '登録', class: "btn-large wave-effect waves-light amber darken-1" %>
   <% end %>
 </div>
