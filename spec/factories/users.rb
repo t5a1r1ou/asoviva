@@ -8,7 +8,20 @@ FactoryBot.define do
     area 4
 
     trait :with_avatar do
-      avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test_man.png')) }
+      avatar { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test_man.png'))
+      }
+    end
+
+    trait :with_too_large_avatar do
+      avatar {
+        fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'over_10mb.jpg'))
+      }
+    end
+
+    trait :with_not_image do
+      avatar {
+        fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test.txt'))
+      }
     end
   end
 end

@@ -13,7 +13,7 @@
     <%= link_to 'プロフィールを編集する', edit_user_path, class: "btn indigo" %>
   <% end %>
   <% if not @user.posts.empty? %>
-    <h4><%= @user.name %>の投稿一覧</h4>
+    <h5><%= @user.name %>の投稿一覧</h5>
     <div class="cards-container">
       <%= render partial: "posts/posts_cards", locals: { posts: @user.posts, bool: false } %>
     </div>
