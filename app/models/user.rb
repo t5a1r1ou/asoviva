@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 140 }
   validates :name, presence: true, length: { maximum: 8 }
 
+  validate :validate_avatar
+
   has_one_attached :avatar
 
   has_many :posts, dependent: :destroy
@@ -59,12 +61,26 @@ class User < ApplicationRecord
       user.password = password
       user.image_url = image_url
     end
+  end
 
+  def validate_avatar
+    return unless avatar.attached?
+    if avatar.blob.byte_size > 10.megabytes
+      avatar.purge
+      errors.add(:avatar, 'ファイルのサイズが大きすぎます')
+    elsif !image?
+      avatar.purge
+      errors.add(:avatar, 'ファイルが対応している画像データではありません')
+    end
   end
 
   private
 
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
+  def image?
+    %w[image/jpg image/jpeg image/gif image/png].include?(avatar.blob.content_type)
   end
 end

@@ -7,6 +7,12 @@ RSpec.describe User, type: :model do
 
   let(:user_attached_image) { FactoryBot.create(:user, :with_avatar, email: 'test_user_2@example.com') }
 
+  let(:user_too_large_avatar) {
+    FactoryBot.build(:user, :with_too_large_avatar)
+  }
+
+  let(:user_attached_not_image) { FactoryBot.build(:user, :with_not_image) }
+
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :email }
   it { is_expected.to validate_presence_of :gender }
@@ -48,6 +54,22 @@ RSpec.describe User, type: :model do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_woman.png'
           expect(user_unsetted_avatar.avatar.attached?).to be false
         end
+      end
+    end
+  end
+
+  describe "avatarのバリデーション", :focus do
+    context "ファイルサイズが10MBを越える時" do
+      it "ファイルサイズが大きすぎますというエラーメッセージが返る" do
+        user_too_large_avatar.valid?
+        expect(user_too_large_avatar.errors[:avatar]).to include 'ファイルのサイズが大きすぎます'
+      end
+    end
+
+    context "ファイルの種類がjpeg, jpg, png, gif以外の時" do
+      it "ファイルが対応している画像データではありませんというエラーメッセージが返る" do
+        user_attached_not_image.valid?
+        expect(user_attached_not_image.errors[:avatar]).to include 'ファイルが対応している画像データではありません'
       end
     end
   end
