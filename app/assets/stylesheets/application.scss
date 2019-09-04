@@ -125,8 +125,20 @@ footer {
   vertical-align: -16%;
 }
 
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #3f51b5;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: #7986cb;
+}
+
 .fix-mt {
-  margin-top: 3rem;
+  margin-top: 2rem;
+}
+
+.fix-mb {
+  margin-bottom: 2rem;
 }
 
 .fix-pb {

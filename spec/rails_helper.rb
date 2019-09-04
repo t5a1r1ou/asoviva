@@ -36,6 +36,8 @@ RSpec.configure do |config|
   end
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::ControllerHelpers, type: :controller
+  OmniAuth.config.test_mode = true
+  config.include OmniAuthHelpers
 end
 
 Shoulda::Matchers.configure do |config|

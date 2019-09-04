@@ -25,4 +25,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
+  private
+
+  def after_sign_in_path_for(resource)
+    if resource.sign_in_count == 1
+      edit_user_path(resource)
+    else
+      posts_path
+    end
+  end
 end
