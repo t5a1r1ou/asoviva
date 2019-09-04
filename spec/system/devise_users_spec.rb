@@ -47,7 +47,7 @@ RSpec.describe 'Users for devise', type: :system do
     end
 
       context '失敗したとき' do
-        it "編集画面が再度描写され、", js: true do
+        it "編集画面が再度描写される", js: true do
           sign_in user
           visit edit_user_registration_path
           fill_in 'user[name]', with: "nakai"

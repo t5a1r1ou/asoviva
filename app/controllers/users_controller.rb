@@ -15,7 +15,7 @@ before_action :authenticate_user!
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update_and_check_image(user_params)
       redirect_to user_url(@user), notice: "#{@user.name}のプロフィールを更新しました!"
     else
       render :edit

@@ -1,6 +1,6 @@
 <%= render 'layouts/toast' %>
 <%= render partial: "layouts/errors_toast", locals: { element: @user } %>
-<div class="row">
+<div class="row fix-mb">
   <h4>プロフィール設定</h4>
   <%= form_with url: user_path, class: "col s12", local: true, model: @user do |f| %>
 
@@ -33,6 +33,9 @@
         <input class="file-path validate" type="text">
       </div>
     </div>
+    <% if @user.image_url %>
+    <p class="grey-text">設定しない場合はTwitterのアイコンが使用されます</p>
+    <% end %>
   </div>
 
   <%= f.submit '登録', class: "btn-large wave-effect waves-light amber darken-1" %>

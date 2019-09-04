@@ -45,6 +45,14 @@ class User < ApplicationRecord
     end
   end
 
+  def update_and_check_image(update_params)
+    if image_url
+      file = open(image_url)
+      avatar.attach(io: file, filename: "#{name}_profile.png")
+    end
+    update(update_params)
+  end
+
   protected
 
   def self.find_for_oauth(auth)
@@ -59,7 +67,7 @@ class User < ApplicationRecord
       user.name = user_name
       user.email = email
       user.password = password
-      user.image_url = image_url
+      user.image_url = image_url if provider == 'twitter'
     end
   end
 

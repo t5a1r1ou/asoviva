@@ -23,5 +23,11 @@ FactoryBot.define do
         fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test.txt'))
       }
     end
+
+    trait :signed_in_with_twitter do
+      image_url {
+        Rails.root.join('spec', 'support', 'assets', 'test_man1.png')
+      }
+    end
   end
 end
