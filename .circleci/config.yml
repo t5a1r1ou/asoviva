@@ -11,8 +11,8 @@ jobs:
             - gem-cache-{{ arch }}-{{ .Branch }}
             - gem-cache
       - run:
-        name: bundle install
-        command: bundle install --jobs=4 --retry=3
+          name: bundle install
+          command: bundle install --jobs=4 --retry=3
       - save_cache:
           key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - run:
