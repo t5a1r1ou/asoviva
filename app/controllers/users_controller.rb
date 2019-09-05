@@ -29,6 +29,10 @@ before_action :authenticate_user!
   end
 
   def user_params
-    params.require(:user).permit(:name, :gender, :profile, :avatar)
+    if params[:user][:avatar] == ""
+      params.require(:user).permit(:name, :gender, :profile)
+    else
+      params.require(:user).permit(:name, :gender, :profile, :avatar)
+    end
   end
 end

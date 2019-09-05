@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def update_and_check_image(update_params)
-    if image_url
+    if image_url && !avatar.attached?
       file = open(image_url)
       avatar.attach(io: file, filename: "#{name}_profile.png")
     end
