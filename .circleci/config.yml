@@ -9,10 +9,10 @@ jobs:
           name: Decode dotenv file
           command: echo ${ENV} | base64 --decode > /home/circleci/project/.env
       - restore_cache:
-        keys:
-          - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock "}}
-          - gem-cache-{{ arch }}-{{ .Branch }}
-          - gem-cache
+          keys:
+            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock "}}
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
       - run:
           name: docker-compose build
           command: docker-compose build
@@ -53,9 +53,9 @@ jobs:
           command: echo ${ENV} | base64 --decode > /home/circleci/project/.env
       - restore_cache:
         keys:
-          - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock "}}
-          - gem-cache-{{ arch }}-{{ .Branch }}
-          - gem-cache
+            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock "}}
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
       - run:
           name: docker-compose build
           command: docker-compose build
