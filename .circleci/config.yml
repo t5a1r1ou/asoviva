@@ -117,9 +117,7 @@ workflows:
   build_rspec_and_deploy:
     jobs:
       - build
-      - rspec:
-          requires:
-            - build
+      - rspec
       - deploy:
           requires:
             - build
