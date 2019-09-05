@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: [:google, :twitter]
+         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i[google twitter]
 
   validates :gender, presence: true
   validates :area, presence: true
@@ -35,7 +37,7 @@ class User < ApplicationRecord
 
   def user_icon
     if avatar.attached?
-      avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed
+      avatar.variant(combine_options: { resize: '200x200^', crop: '200x200+0+0', gravity: :center }).processed
     else
       case gender
       when '設定しない' then 'dammy_not_selected.png'
@@ -47,7 +49,8 @@ class User < ApplicationRecord
 
   def update_and_check_image(update_params)
     if image_url && !avatar.attached?
-      file = open(image_url)
+      uri = URI.parse(image_url)
+      file = uri.open
       avatar.attach(io: file, filename: "#{name}_profile.png")
     end
     update(update_params)
@@ -55,24 +58,27 @@ class User < ApplicationRecord
 
   protected
 
-  def self.find_for_oauth(auth)
-    provider = auth[:provider]
-    uid = auth[:uid]
-    user_name = auth[:info][:name]
-    image_url = auth[:info][:image]
-    email = User.dummy_email(auth)
-    password = Devise.friendly_token[0, 20]
+  class << self
+    def find_for_oauth(auth)
+      provider = auth[:provider]
+      uid = auth[:uid]
+      user_name = auth[:info][:name]
+      image_url = auth[:info][:image]
+      email = User.dummy_email(auth)
+      password = Devise.friendly_token[0, 20]
 
-    self.find_or_create_by(provider: provider, uid: uid) do |user|
-      user.name = user_name
-      user.email = email
-      user.password = password
-      user.image_url = image_url if provider == 'twitter'
+      find_or_create_by(provider: provider, uid: uid) do |user|
+        user.name = user_name
+        user.email = email
+        user.password = password
+        user.image_url = image_url if provider == 'twitter'
+      end
     end
   end
 
   def validate_avatar
     return unless avatar.attached?
+
     if avatar.blob.byte_size > 10.megabytes
       avatar.purge
       errors.add(:avatar, 'ファイルのサイズが大きすぎます')
@@ -84,8 +90,10 @@ class User < ApplicationRecord
 
   private
 
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
+  class << self
+    def dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
+    end
   end
 
   def image?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -7,9 +9,9 @@ RSpec.describe User, type: :model do
 
   let(:user_attached_image) { FactoryBot.create(:user, :with_avatar, email: 'test_user_2@example.com') }
 
-  let(:user_too_large_avatar) {
+  let(:user_too_large_avatar) do
     FactoryBot.build(:user, :with_too_large_avatar)
-  }
+  end
 
   let(:user_attached_not_image) { FactoryBot.build(:user, :with_not_image) }
 
@@ -22,17 +24,15 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to validate_length_of(:profile).is_at_most(140) }
 
-  describe "user_iconが期待通り実装されている" do
-
-    context "プロフィール画像が設定されている時" do
-      it "user.avatar.attached?がtrueになる" do
+  describe 'user_iconが期待通り実装されている' do
+    context 'プロフィール画像が設定されている時' do
+      it 'user.avatar.attached?がtrueになる' do
         expect(user_attached_image.avatar.attached?).to be true
       end
     end
 
-    context "プロフィール画像が設定されていない時" do
-
-      context "user.jenderが未設定の時" do
+    context 'プロフィール画像が設定されていない時' do
+      context 'user.jenderが未設定の時' do
         let(:gender) { 0 }
         it "returns 'dammy_not_selected.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_not_selected.png'
@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context "user.jenderが男性の時" do
+      context 'user.jenderが男性の時' do
         let(:gender) { 1 }
         it "returns 'dammy_man.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_man.png'
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context "user.jenderが女性の時" do
+      context 'user.jenderが女性の時' do
         let(:gender) { 2 }
         it "returns 'dammy_woman.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_woman.png'
@@ -58,16 +58,16 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "avatarのバリデーション", :focus do
-    context "ファイルサイズが10MBを越える時" do
-      it "ファイルサイズが大きすぎますというエラーメッセージが返る" do
+  describe 'avatarのバリデーション', :focus do
+    context 'ファイルサイズが10MBを越える時' do
+      it 'ファイルサイズが大きすぎますというエラーメッセージが返る' do
         user_too_large_avatar.valid?
         expect(user_too_large_avatar.errors[:avatar]).to include 'ファイルのサイズが大きすぎます'
       end
     end
 
-    context "ファイルの種類がjpeg, jpg, png, gif以外の時" do
-      it "ファイルが対応している画像データではありませんというエラーメッセージが返る" do
+    context 'ファイルの種類がjpeg, jpg, png, gif以外の時' do
+      it 'ファイルが対応している画像データではありませんというエラーメッセージが返る' do
         user_attached_not_image.valid?
         expect(user_attached_not_image.errors[:avatar]).to include 'ファイルが対応している画像データではありません'
       end

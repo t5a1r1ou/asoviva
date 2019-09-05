@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-
   let(:post) { FactoryBot.build(:post, user_id: user.id) }
   let(:post_desc_nil) { FactoryBot.create(:post, :desc_nil, user_id: user.id) }
   let!(:user) { FactoryBot.create(:user) }
@@ -42,7 +43,6 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'count_aboutメソッドが正しく実装されている' do
-
     context 'post.countが1の時' do
       it '「1人」' do
         post.count = 1
@@ -74,8 +74,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe "category_colorメソッドが正しく実装されている" do
-
+  describe 'category_colorメソッドが正しく実装されている' do
     context "post.categoryが'イベント'のとき" do
       it 'returns light-blue lighten-1' do
         post.category = 'イベント'

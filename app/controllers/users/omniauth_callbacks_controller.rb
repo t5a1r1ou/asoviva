@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def google
     callback_from :google
   end
@@ -9,7 +8,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     callback_from :twitter
   end
-
 
   def callback_from(provider)
     provider = provider.to_s
