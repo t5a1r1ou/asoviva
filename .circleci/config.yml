@@ -38,7 +38,7 @@ jobs:
           name: bundle install
           command: docker-compose run web bundle install --jobs=4 --retry=3
       - save_cache:
-        keys: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+        key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - run:
           name: docker-compose up
           command: docker-compose up -d
