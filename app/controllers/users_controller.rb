@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-before_action :set_user, except: [:index]
-before_action :authenticate_user!
+  before_action :set_user, except: [:index]
+  before_action :authenticate_user!
 
   def index
     @users = User.all
@@ -11,8 +13,7 @@ before_action :authenticate_user!
     @posts = current_user.posts
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update_and_check_image(user_params)
@@ -29,7 +30,7 @@ before_action :authenticate_user!
   end
 
   def user_params
-    if params[:user][:avatar] == ""
+    if params[:user][:avatar] == ''
       params.require(:user).permit(:name, :gender, :profile)
     else
       params.require(:user).permit(:name, :gender, :profile, :avatar)

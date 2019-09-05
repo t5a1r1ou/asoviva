@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_post, except: [:index, :create]
+  before_action :set_post, except: %i[index create]
 
   def index
     @post = Post.new
@@ -18,8 +20,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'

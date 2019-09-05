@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -36,11 +38,12 @@ gem 'kaminari'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 gem 'activerecord-nulldb-adapter'
+gem 'rubocop'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 3.8.0'
-  gem 'factory_bot_rails', "~> 4.10.0"
+  gem 'factory_bot_rails', '~> 4.10.0'
 end
 
 group :development do
@@ -57,6 +60,5 @@ group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
