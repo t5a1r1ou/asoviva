@@ -7,7 +7,7 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <%= f.label :password, "New password", placeholder: "6文字以上必須" %>
+        <%= f.label :password, "New password" %>
         <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
       </div>
     </div>
@@ -19,8 +19,10 @@
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit "パスワード変更" %>
+    <div class="actions row">
+      <div class="input-field col s12">
+        <%= f.submit 'パスワード変更', class: "btn wave-effect waves-light amber darken-1" %>
+      </div>
     </div>
   <% end %>
 
