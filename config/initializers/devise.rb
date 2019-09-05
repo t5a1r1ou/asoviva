@@ -34,7 +34,7 @@ Devise.setup do |config|
 
   config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], name: :google
 
-  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], :image_size => 'original'
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], :image_size => 'large'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
