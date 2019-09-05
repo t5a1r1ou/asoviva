@@ -15,6 +15,8 @@ jobs:
           command: bundle install --jobs=4 --retry=3
       - save_cache:
           key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
       - run:
           name: Rubocop
           command: bundle exec rubocop
@@ -39,6 +41,8 @@ jobs:
           command: docker-compose run web bundle install --jobs=4 --retry=3
       - save_cache:
         key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+        paths:
+          - /usr/local/bundle
       - run:
           name: docker-compose up
           command: docker-compose up -d
