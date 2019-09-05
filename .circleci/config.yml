@@ -22,7 +22,7 @@ jobs:
           command: bundle exec rubocop
   rspec:
     machine:
-      image: circleci/classic:edge
+      - image: circleci/classic:edge
     steps:
       - checkout
       - run:
