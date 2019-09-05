@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     machine:
-      - image: circleci/classic:edge
+      image: circleci/classic:edge
     steps:
       - checkout
       - restore_cache:
@@ -22,7 +22,7 @@ jobs:
           command: bundle exec rubocop
   rspec:
     machine:
-      - image: circleci/classic:edge
+      image: circleci/classic:edge
     steps:
       - checkout
       - run:
