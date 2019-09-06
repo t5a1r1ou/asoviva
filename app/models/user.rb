@@ -47,15 +47,6 @@ class User < ApplicationRecord
     end
   end
 
-  def update_and_check_image(update_params)
-    if image_url && !avatar.attached?
-      uri = URI.parse(image_url)
-      file = uri.open
-      avatar.attach(io: file, filename: "#{name}_profile.png")
-    end
-    update(update_params)
-  end
-
   protected
 
   class << self
@@ -64,6 +55,8 @@ class User < ApplicationRecord
       uid = auth[:uid]
       user_name = auth[:info][:name]
       image_url = auth[:info][:image]
+      uri = URI.parse(image_url)
+      image = uri.open
       email = User.dummy_email(auth)
       password = Devise.friendly_token[0, 20]
 
@@ -71,7 +64,7 @@ class User < ApplicationRecord
         user.name = user_name
         user.email = email
         user.password = password
-        user.image_url = image_url if provider == 'twitter'
+        user.avatar.attach(io: image, filename: "#{user.name}_profile.png")
       end
     end
   end

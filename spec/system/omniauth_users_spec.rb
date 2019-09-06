@@ -11,14 +11,14 @@ RSpec.describe 'Users through OmniAuth', type: :system do
         visit root_path
       end
 
-      it 'ログインをするとユーザー数が増え、アバターのurlが取得できる', js: true do
+      it 'ログインをするとユーザー数が増え、アバターが取得できる', js: true do
         expect do
           click_link 'Twitterでログイン'
         end.to change(User, :count).by(1)
         expect(page).to have_content 'プロフィール設定'
         expect(page).to have_content 'Twitter アカウントによる認証に成功しました'
         user = User.last
-        expect(user.image_url).to eq 'https://test.com/test.png'
+        expect(user.avatar.attached?).to eq true
       end
     end
 
@@ -29,14 +29,14 @@ RSpec.describe 'Users through OmniAuth', type: :system do
         visit root_path
       end
 
-      it 'ログインをするとユーザー数が増えるが、アバターのurlは取得できない', js: true do
+      it 'ログインをするとユーザー数が増え、アバターが取得できる', js: true do
         expect do
           click_link 'Googleでログイン'
         end.to change(User, :count).by(1)
         expect(page).to have_content 'プロフィール設定'
         expect(page).to have_content 'Google アカウントによる認証に成功しました'
         user = User.last
-        expect(user.image_url).to eq nil
+        expect(user.avatar.attached?).to eq true
       end
     end
   end

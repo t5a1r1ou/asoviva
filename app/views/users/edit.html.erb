@@ -37,9 +37,6 @@
         <% end %>
       </div>
     </div>
-    <% if @user.image_url && !@user.avatar.attached? %>
-    <p class="grey-text">設定しない場合はTwitterのアイコンが使用されます</p>
-    <% end %>
   </div>
 
   <%= f.submit '登録', class: "btn-large wave-effect waves-light amber darken-1" %>

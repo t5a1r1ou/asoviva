@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'プロフィール画像が設定されていない時' do
-      context 'user.jenderが未設定の時' do
+      context 'user.genderが未設定の時' do
         let(:gender) { 0 }
         it "returns 'dammy_not_selected.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_not_selected.png'
@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'user.jenderが男性の時' do
+      context 'user.genderが男性の時' do
         let(:gender) { 1 }
         it "returns 'dammy_man.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_man.png'
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'user.jenderが女性の時' do
+      context 'user.genderが女性の時' do
         let(:gender) { 2 }
         it "returns 'dammy_woman.png'" do
           expect(user_unsetted_avatar.user_icon).to eq 'dammy_woman.png'
