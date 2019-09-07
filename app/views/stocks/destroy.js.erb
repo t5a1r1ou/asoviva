@@ -1,0 +1,1 @@
+document.getElementById("stock-btn_<%= @post.id %>").innerHTML = "<%= escape_javascript(render partial: 'posts/stock_btn', locals: { post: @post }) %>"

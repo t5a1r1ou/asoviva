@@ -38,5 +38,7 @@ module App
       g.view_specs = false
       g.helper_specs = false
     end
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

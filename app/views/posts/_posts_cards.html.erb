@@ -2,17 +2,9 @@
   <div class="card-container_post">
     <div class="col s12 m4">
       <div class="card">
-        <% if user_signed_in? && !current_user?(post.user) %>
-          <% if post.stocked_by?(current_user) %>
-            <%= link_to post_stocks_path(post.id), method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red" do %>
-              <i class="material-icons">favorite</i>
-            <% end %>
-          <% else %>
-            <%= link_to post_stocks_path(post.id), method: :post, class: "btn-floating halfway-fab waves-effect waves-light red" do %>
-              <i class="material-icons">favorite_border</i>
-            <% end %>
-          <% end %>
-        <% end %>
+        <div id="stock-btn_<%= post.id %>">
+          <%= render partial: 'posts/stock_btn', locals: {post: post} %>
+        </div>
         <div class="chip chip_position white-text <%= post.category_color %>"><%= post.category %></div>
         <div class="card-content">
           <% @contents = capture do %>
