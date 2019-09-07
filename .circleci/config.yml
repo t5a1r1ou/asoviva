@@ -41,46 +41,6 @@ jobs:
           name: rubocop
           command: docker-compose run web bundle exec rubocop
       - run:
-          name: docker-compose down
-          command: docker-compose down
-  rspec:
-    machine:
-      image: circleci/classic:edge
-    steps:
-      - checkout
-      - run:
-          name: Decode dotenv file
-          command: echo ${ENV} | base64 --decode > /home/circleci/project/.env
-      - restore_cache:
-          keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-{{ arch }}-{{ .Branch }}
-            - gem-cache
-      - run:
-          name: docker-compose build
-          command: docker-compose build
-      - run:
-          name: bundle install
-          command: docker-compose run web bundle install --jobs=4 --retry=3
-      - save_cache:
-          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/.bundle
-      - run:
-          name: docker-compose up
-          command: docker-compose up -d
-      - run:
-          name: install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: "before_test: setup db"
-          command: docker-compose run web bin/rails db:create db:migrate
-      - run:
           name: rspec
           command: docker-compose run web bin/rspec
       - run:
@@ -117,11 +77,9 @@ workflows:
   build_rspec_and_deploy:
     jobs:
       - build
-      - rspec
       - deploy:
           requires:
             - build
-            - rspec
           filters:
             branches:
               only: master
