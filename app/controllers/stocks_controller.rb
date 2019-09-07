@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StocksController < ApplicationController
   def create
     stock = current_user.stocks.build(post_id: params[:post_id])
