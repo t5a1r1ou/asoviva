@@ -21,7 +21,7 @@
     <p>まだ投稿がありません</p>
   <% end %>
   <% if not @user.stocking_posts.empty? %>
-    <h5><%= @user.name %>のストックした投稿一覧</h5>
+    <h5><%= @user.name %>のキープした投稿一覧</h5>
     <div class="card-cotainer">
       <%= render partial: "posts/posts_cards", locals: { posts: @user.stocking_posts, bool: true } %>
     </div>

@@ -87,9 +87,11 @@ footer {
   }
 }
 
-// フロートボタンの位置調整
-.btn-floating.halfway-fab {
-  top: 116px;
+// ストックボタンの位置調整
+.btn_stock {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .fixed-action-btn_write {

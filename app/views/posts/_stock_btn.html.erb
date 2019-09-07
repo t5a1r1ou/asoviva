@@ -1,11 +1,11 @@
 <% if user_signed_in? && !current_user?(post.user) %>
   <% if post.stocked_by?(current_user) %>
-    <%= link_to post_stocks_path(post.id), method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red ajax_stock", remote: true do %>
-      <i class="material-icons">favorite</i>
+    <%= link_to post_stocks_path(post.id), method: :delete, class: "btn_stock white black-text stock-text", remote: true do %>
+      <i class="material-icons red-text">favorite</i>キープ済み
     <% end %>
   <% else %>
-    <%= link_to post_stocks_path(post.id), method: :post, class: "btn-floating halfway-fab waves-effect waves-light red ajax_stock", remote: true do %>
-      <i class="material-icons">favorite_border</i>
+    <%= link_to post_stocks_path(post.id), method: :post, class: "btn_stock white black-text stock-text", remote: true do %>
+      <i class="material-icons black-text">favorite_border</i>キープする
     <% end %>
   <% end %>
 <% end %>
