@@ -6,7 +6,6 @@ class StocksController < ApplicationController
     @stock = current_user.stocks.build(post_id: params[:post_id])
     @stock.save
     respond_to do |format|
-      format.html
       format.js
     end
   end
@@ -16,7 +15,6 @@ class StocksController < ApplicationController
     @stock = current_user.stocks.find_by(post_id: params[:post_id])
     @stock.destroy
     respond_to do |format|
-      format.html
       format.js
     end
   end
