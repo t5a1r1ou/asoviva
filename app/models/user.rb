@@ -17,6 +17,15 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_many :stocks, dependent: :destroy
+  has_many :stocking_posts, through: :stocks, source: :post
+
+  has_many :relationships, foreign_key: :following_id, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follower
+
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy
+  has_many :followers, through: :relationships, source: :following
+
   enum gender: {
     '設定しない' => 0,
     '男性' => 1,
@@ -47,13 +56,8 @@ class User < ApplicationRecord
     end
   end
 
-  def update_and_check_image(update_params)
-    if image_url && !avatar.attached?
-      uri = URI.parse(image_url)
-      file = uri.open
-      avatar.attach(io: file, filename: "#{name}_profile.png")
-    end
-    update(update_params)
+  def followed_by?(user)
+    reverse_of_relationships.find_by(following_id: user.id).present?
   end
 
   protected
@@ -64,6 +68,8 @@ class User < ApplicationRecord
       uid = auth[:uid]
       user_name = auth[:info][:name]
       image_url = auth[:info][:image]
+      uri = URI.parse(image_url)
+      image = uri.open
       email = User.dummy_email(auth)
       password = Devise.friendly_token[0, 20]
 
@@ -71,7 +77,7 @@ class User < ApplicationRecord
         user.name = user_name
         user.email = email
         user.password = password
-        user.image_url = image_url if provider == 'twitter'
+        user.avatar.attach(io: image, filename: "#{user.name}_profile.png")
       end
     end
   end

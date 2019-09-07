@@ -13,10 +13,18 @@ class UsersController < ApplicationController
     @posts = current_user.posts
   end
 
+  def follows
+    @users = @user.followings
+  end
+
+  def followers
+    @users = @user.followers
+  end
+
   def edit; end
 
   def update
-    if @user.update_and_check_image(user_params)
+    if @user.update(user_params)
       redirect_to user_url(@user), notice: "#{@user.name}のプロフィールを更新しました!"
     else
       render :edit

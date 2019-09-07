@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   }
   validates :deadline, presence: true
   validate :deadline_future
+  validates :user_id, presence: true
 
   enum area: {
     '北海道' => 0,
@@ -35,6 +36,8 @@ class Post < ApplicationRecord
   }
 
   belongs_to :user
+
+  has_many :stocks, dependent: :destroy
 
   def count_about
     case count
@@ -63,5 +66,9 @@ class Post < ApplicationRecord
 
   def description_digest
     description.truncate(12)
+  end
+
+  def stocked_by?(user)
+    stocks.where(user_id: user.id).exists?
   end
 end

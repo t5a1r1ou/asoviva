@@ -9,7 +9,7 @@ module OmniAuthHelpers
       uid: '1234',
       info: {
         name: 'mockuser',
-        image: 'https://test.com/test.png'
+        image: 'https://placehold.jp/150x150.png'
       }
     )
   end
