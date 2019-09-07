@@ -3,7 +3,17 @@
   <% @users.each do |user| %>
     <div class="card-container_user">
         <div class="card">
-          <div class="chip chip_position white-text indigo"><a href="#" class="white-text">フォローする</a></div>
+          <% if !current_user?(user) %>
+            <% if user.followed_by?(current_user) %>
+              <div class="chip chip_position white-text grey">
+                  <%= link_to 'フォロー中', user_relationships_path(user.id), method: :delete, class: "white-text" %>
+              </div>
+            <% else %>
+            <div class="chip chip_position white-text indigo">
+                <%= link_to 'フォローする', user_relationships_path(user.id), method: :post, class: "white-text" %>
+            </div>
+            <% end %>
+          <% end %>
           <div class="card-content">
             <%= link_to user do %>
             <span class="card-title black-text">

@@ -17,6 +17,15 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_many :stocks, dependent: :destroy
+  has_many :stocking_posts, through: :stocks, source: :post
+
+  has_many :relationships, foreign_key: :following_id, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follower
+
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy
+  has_many :followers, through: :relationships, source: :following
+
   enum gender: {
     '設定しない' => 0,
     '男性' => 1,
@@ -45,6 +54,10 @@ class User < ApplicationRecord
       when '女性' then 'dammy_woman.png'
       end
     end
+  end
+
+  def followed_by?(user)
+    reverse_of_relationships.find_by(following_id: user.id).present?
   end
 
   protected

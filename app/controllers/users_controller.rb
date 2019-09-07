@@ -13,6 +13,14 @@ class UsersController < ApplicationController
     @posts = current_user.posts
   end
 
+  def follows
+    @users = @user.followings
+  end
+
+  def followers
+    @users = @user.followers
+  end
+
   def edit; end
 
   def update
