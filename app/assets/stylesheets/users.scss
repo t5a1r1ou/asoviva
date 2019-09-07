@@ -5,6 +5,10 @@
 .name-icon_box_user {
   display: flex;
   align-items: center;
+  position: relative;
+  &.show_user {
+    padding-top: 1rem;
+  }
   .icon_users {
     width: 60px;
     height: 60px;
@@ -24,6 +28,10 @@
     .users_area_text {
       font-size: 12px;
     }
+  }
+  .chip_position {
+    left: 0;
+    right: auto;
   }
 }
 

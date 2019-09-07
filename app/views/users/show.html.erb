@@ -1,10 +1,11 @@
 <%= render "layouts/toast" %>
 <%= render "posts/fixedbutton" %>
 <div class="container fix-pb">
-  <div class="name-icon_box_user">
+  <div class="name-icon_box_user show_user">
     <div>
       <h3><%= @user.name %></h3>
       <p class="grey-text user_area_text">エリア：<%= @user.area %></p>
+      <%= render partial: 'users/follow_btn', locals: { user: @user } %>
     </div>
     <%= image_tag @user.user_icon, class: "icon_user" %>
   </div>
@@ -22,8 +23,9 @@
   <% end %>
   <% if not @user.stocking_posts.empty? %>
     <h5><%= @user.name %>のキープした投稿一覧</h5>
-    <div class="card-cotainer">
+    <div class="cards-container">
       <%= render partial: "posts/posts_cards", locals: { posts: @user.stocking_posts, bool: true } %>
     </div>
+  </div>
   <% end %>
 </div>

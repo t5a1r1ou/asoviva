@@ -3,9 +3,7 @@
   <% @users.each do |user| %>
     <div class="card-container_user">
         <div class="card">
-          <div id="follow-btn_<%= user.id %>">
-            <%= render partial: 'users/follow_btn', locals: { user: user } %>
-          </div>
+          <%= render partial: 'users/follow_btn', locals: { user: user } %>
           <div class="card-content">
             <%= link_to user do %>
             <span class="card-title black-text">
@@ -27,5 +25,5 @@
   <% end %>
   <% else %>
   <p>まだユーザーがいません</p>
-</div>
 <% end %>
+</div>
