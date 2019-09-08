@@ -6,10 +6,13 @@ RSpec.describe 'Posts', type: :system do
   let(:user) { FactoryBot.create(:user) }
   let!(:post) { FactoryBot.create(:post, user_id: user.id) }
 
+  before do
+    sign_in user
+  end
+
   describe 'ポストの作成' do
     context '成功したとき' do
       it '一覧画面に戻り、そのポスト名を含むフラッシュメッセージが表示される', js: true do
-        sign_in user
         visit posts_path
         click_link 'mode_edit'
         expect(page).to have_content '新規登録'
@@ -25,7 +28,6 @@ RSpec.describe 'Posts', type: :system do
 
     context '失敗したとき' do
       it '一覧画面に戻り、エラーメッセージが表示され、入力途中の内容がフォームに保持される', js: true do
-        sign_in user
         visit posts_path
         click_link 'mode_edit'
         expect(page).to have_content '新規登録'
@@ -45,7 +47,6 @@ RSpec.describe 'Posts', type: :system do
   describe 'ポストの更新' do
     context '成功したとき' do
       it '一覧画面に戻り、そのポスト名を含むフラッシュメッセージが表示される', js: true do
-        sign_in user
         visit post_path(post)
         find('#post_menu_btn').click
         click_link 'edit'
@@ -58,7 +59,6 @@ RSpec.describe 'Posts', type: :system do
 
     context '失敗したとき' do
       it '編集画面に戻り、入力途中の内容がフォームに保持される', js: true do
-        sign_in user
         visit post_path(post)
         find('#post_menu_btn').click
         click_link 'edit'
@@ -73,7 +73,6 @@ RSpec.describe 'Posts', type: :system do
 
   describe 'ポストの削除' do
     it '一覧画面が表示され、一覧からは削除したポストが消えている', js: true do
-      sign_in user
       visit posts_path
       expect(page).to have_content 'ららぽーと横浜'
       visit post_path(post)
