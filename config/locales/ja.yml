@@ -13,13 +13,15 @@ ja:
       post:
         id: ID
         name: どこ行きたい？
-        description: 何する？（任意）
+        description: 募集内容
         created_at: 登録日時
         updated_at: 更新日時
         area: エリア
         count: 何人で？
         deadline: いつまでに？
         category: カテゴリ
+      comment:
+        body: コメント
   date:
     abbr_day_names:
     - 日
