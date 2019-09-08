@@ -11,9 +11,9 @@
       <%= link_to @contents, user_path(@post.user) %>
       <h3 class="post_title"><%= @post.name %></h3>
       <p class="grey-text">エリア：<%= @post.area %></p>
-      <!-- <div class="stock_show">
+      <div class="stock_show">
         <%= render partial: 'posts/stock_btn', locals: {post: @post} %>
-      </div> -->
+      </div>
     </div>
   </div>
   <div class="pc_texts">
