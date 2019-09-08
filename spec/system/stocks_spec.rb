@@ -16,15 +16,15 @@ RSpec.describe 'Stocks', type: :system do
     context '他のユーザーの投稿をキープするとき' do
       it 'ストックのつけ外しができ、ユーザーの詳細画面でも反映される', js: true do
         expect do
-          find("#stock-btn_#{post.id}").find('.stock-text').click
-          find("#stock-btn_#{post.id}").find('.stock-text')
+          find('.stock-text').click
+          find('.stock-text')
         end.to change(user.stocks, :count).by(1)
         visit user_path(user)
         expect(page).to have_content 'ららぽーと横浜'
         visit posts_path
         expect do
-          find("#stock-btn_#{post.id}").find('.stock-text').click
-          find("#stock-btn_#{post.id}").find('.stock-text')
+          find('.stock-text').click
+          find('.stock-text')
         end.to change(user.stocks, :count).by(-1)
         visit user_path(user)
         expect(page).to_not have_content 'ららぽーと横浜'
