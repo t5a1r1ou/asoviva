@@ -39,6 +39,9 @@ class Post < ApplicationRecord
 
   has_many :stocks, dependent: :destroy
 
+  has_many :comments, dependent: :destroy
+  has_many :commented_users
+
   def count_about
     case count
     when 1 then '1人'
@@ -70,5 +73,9 @@ class Post < ApplicationRecord
 
   def stocked_by?(user)
     stocks.where(user_id: user.id).exists?
+  end
+
+  def commented_by?(user)
+    comments.where(user_id: user.id).exists?
   end
 end

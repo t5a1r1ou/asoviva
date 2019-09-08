@@ -1,3 +1,4 @@
+<%= render "layouts/toast" %>
 <div class="container">
   <div class="card white">
     <% if current_user.id == @post.user.id %>
@@ -28,4 +29,7 @@
       <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
     </div>
   </div>
+  <% unless current_user?(@post.user) %>
+    <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
+  <% end %>
 </div>
