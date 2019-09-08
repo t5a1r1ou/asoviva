@@ -30,7 +30,7 @@ RSpec.describe 'Stocks', type: :system do
     end
   end
 
-  describe "投稿詳細画面からの操作" do
+  describe '投稿詳細画面からの操作' do
     it 'ストックのつけ外しができ、ユーザーの詳細画面でも反映される', js: true do
       visit post_path(post)
       expect do
