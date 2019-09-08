@@ -47,6 +47,9 @@ $tab: 601px;
   align-items: center;
   margin-top: -1rem;
   margin-bottom: .5rem;
+  &.post_show {
+    margin-top: 2.5rem;
+  }
   .icon_post {
     width: 30px;
     height: 30px;
@@ -54,4 +57,25 @@ $tab: 601px;
     visibility: -10%;
     margin-right: .3rem;
   }
+}
+
+.post_title {
+  margin-top: .2rem;
+}
+
+.post_show_container {
+  position: relative;
+  .chip_position {
+    top: 2.5rem;
+  }
+}
+
+.post_show_flex {
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.edit_btns a {
+  margin-right: 1.5rem;
 }

@@ -1,35 +1,59 @@
 <%= render "layouts/toast" %>
-<div class="container">
-  <div class="card white">
-    <% if current_user.id == @post.user.id %>
-    <div class="fixed-action-btn_menu">
-      <a id="post_menu_btn" class="btn-floating halfway-fab forshow waves-effect waves-light green"><i class="material-icons">menu</i></a>
-      <ul>
-        <li>
-        <%= link_to edit_post_path(@post), class: "btn-floating red" do %>
-          <i class="material-icons">edit</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to @post, method: :delete, data: { confirm: "#{@post.name}に行く予定を削除します。よろしいですか？"}, class: "btn-floating yellow" do %>
-          <i class="material-icons">delete</i>
-        <% end %>
-      </li>
-      </ul>
-    </div>
-    <% end %>
-    <div class="card-content">
-      <span class="card-title <%= @post.long_title_class %>"><%= @post.name %><span class="title-suffix">に行きたい！</span></span>
-      <p><%= Post.human_attribute_name(:deadline) %>:<%= @post.deadline.to_s(:ymd) %></p>
-      <p><%= Post.human_attribute_name(:count) %>:<%= @post.count_about %></p>
-
-    </div>
-    <div class="card-action white-text <%= @post.category_color %>">
-      <p class="amber-text darken-4">詳しい内容</p>
-      <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
+<div class="container fix-pb post_show_container">
+  <div class="name-icon_box_post post_show">
+    <div>
+      <div class="chip chip_position white-text <%= @post.category_color %>"><%= @post.category %></div>
+      <% @contents = capture do %>
+      <div class="name-icon_box_post">
+        <%= image_tag @post.user.user_icon, class: "icon_post" %><p class="black-text"><%= @post.user.name %></p>
+      </div>
+      <% end %>
+      <%= link_to @contents, user_path(@post.user) %>
+      <h3 class="post_title"><%= @post.name %></h3>
+      <p class="grey-text">エリア：<%= @post.area %></p>
+      <!-- <div class="stock_show">
+        <%= render partial: 'posts/stock_btn', locals: {post: @post} %>
+      </div> -->
     </div>
   </div>
-  <% unless current_user?(@post.user) %>
-    <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
-  <% end %>
+  <div class="pc_texts">
+    <div class="row">
+      <div class="col s12">
+        <p class="chip chip_static white-text indigo"><%= Post.human_attribute_name(:description) %></p>
+        <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p class="chip chip_static white-text indigo"><%= Post.human_attribute_name(:deadline) %></p>
+        <p><%= @post.deadline %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <p class="chip chip_static white-text indigo"><%= Post.human_attribute_name(:count) %></p>
+        <p><%= @post.count %>人ぐらい</p>
+      </div>
+      <div class="col s6">
+        <p class="chip chip_static white-text indigo"><%= Post.human_attribute_name(:area) %></p>
+        <p><%= @post.area %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fix-pb">
+        <% if not current_user?(@post.user) %>
+          <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
+        <% else %>
+        <div class="flex edit_btns">
+          <div>
+            <%= link_to '編集する', edit_post_path(@post), class: "waves-effect waves-light btn amber darken-1" %>
+          </div>
+          <div>
+            <%= link_to '削除する', @post, method: :delete, data: { confirm: "#{@post.name}に行く予定を削除します。よろしいですか？"}, class: "waves-effect waves-light btn red" %>
+          </div>
+        </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
 </div>

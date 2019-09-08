@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: :index
   before_action :authenticate_user!
+  before_action :current_user!, only: %i[commented comments]
 
   def index
     @users = User.all
@@ -41,6 +42,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def current_user!
+    redirect_to posts_url, alert: 'アクセス権限がありません' if current_user.id != params[:id].to_i
   end
 
   def user_params

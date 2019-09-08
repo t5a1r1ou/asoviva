@@ -1,6 +1,7 @@
 <div class="container">
   <p>comments</p>
   <% @user.sent_comment_posts.each do |post| %>
+  <p><%= post.name %></p>
   <p><%= post.user.name %></p>
   <% post.comments.each do |comment| %>
   <% if comment.user_id == @user.id %>
