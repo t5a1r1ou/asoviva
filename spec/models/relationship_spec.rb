@@ -3,5 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to validate_presence_of :following_id }
+  it { is_expected.to validate_presence_of :follower_id }
+  it { is_expected.to belong_to(:following).class_name('User') }
+  it { is_expected.to belong_to(:follower).class_name('User') }
 end
