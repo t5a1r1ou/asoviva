@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :relationships, source: :following
 
+  has_many :comments, dependent: :destroy
+  has_many :sent_comment_posts, through: :comments, source: :post
+
   enum gender: {
     '設定しない' => 0,
     '男性' => 1,

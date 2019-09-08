@@ -1,0 +1,21 @@
+<div id="comments-form_<%= post.id %>">
+  <% if post.commented_by?(current_user) %>
+    <a class="waves-effect waves-light btn-large modal-trigger grey comment-btn">リクエスト済み</a>
+  <% else %>
+  <a class="waves-effect waves-light btn-large modal-trigger indigo comment-btn" href="#modal1">行きたい！</a>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <%= form_with model: @comment, url: post_comments_path(post.id), class: "col s12", local: true, method: :post do |f| %>
+      <div class="row">
+        <p>コメント欄（任意）</p>
+        <div class="input-field col s12">
+          <%= f.text_area :body, class: 'validate materialize-textarea', id: 'input_name', rows: 2, :'data-length' => 15  %>
+          <%= f.label :body %>
+        </div>
+        <%= f.submit '送信する', class: "btn-large wave-effect waves-light amber darken-1" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

@@ -10,7 +10,7 @@
     <%= image_tag @user.user_icon, class: "icon_user" %>
   </div>
   <p class="user_profile_text"><%= @user.profile.presence || 'プロフィールが設定されていません' %></p>
-  <% if current_user.id == @user.id %>
+  <% if current_user?(@user) %>
     <%= link_to 'プロフィールを編集する', edit_user_path, class: "btn indigo" %>
   <% end %>
   <% if not @user.posts.empty? %>
@@ -21,7 +21,7 @@
   <% else %>
     <p>まだ投稿がありません</p>
   <% end %>
-  <% if not @user.stocking_posts.empty? %>
+  <% if current_user?(@user) %>
     <h5><%= @user.name %>のキープした投稿一覧</h5>
     <div class="cards-container">
       <%= render partial: "posts/posts_cards", locals: { posts: @user.stocking_posts, bool: true } %>

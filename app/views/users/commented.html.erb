@@ -1,0 +1,10 @@
+<div class="container">
+  <p>commented</p>
+  <% @posts.each do |post| %>
+  <% post.comments.each do |comment| %>
+  <% user = User.find(comment.user_id) %>
+    <p><%= user.name %></p>
+    <p><%= comment.body %></p>
+  <% end %>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: :index
   before_action :authenticate_user!
 
   def index
@@ -30,6 +30,12 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def commented
+    @posts = Post.where(user_id: params[:id])
+  end
+
+  def comments; end
 
   private
 
