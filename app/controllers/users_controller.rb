@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :current_user!, only: %i[commented comments]
 
   def index
-    @users = User.all
+    @users = User.with_attached_avatar
   end
 
   def show
