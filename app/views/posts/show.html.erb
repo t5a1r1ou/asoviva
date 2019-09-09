@@ -9,14 +9,37 @@
       </div>
       <% end %>
       <%= link_to @contents, user_path(@post.user) %>
-      <h3 class="post_title"><%= @post.name %></h3>
-      <p class="grey-text">エリア：<%= @post.area %></p>
+      <h3 class="post_title"><%= @post.name %><span class="title-suffix">に行きたい</span></h3>
       <div class="stock_show">
         <%= render partial: 'posts/stock_btn', locals: {post: @post} %>
       </div>
     </div>
   </div>
-  <div class="pc_texts">
+  <div class="show_container">
+    <p class="indigo-text"><%= Post.human_attribute_name(:description) %></p>
+    <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
+    <ul class="collection">
+        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:deadline) %></span><span class="collection_content"><%= @post.deadline %></span></li>
+        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area) %></span><span class="collection_content"><%= @post.area %></span></li>
+        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:count) %></span><span class="collection_content"><%= @post.count %>人</span></li>
+      </ul>
+      <% if not current_user?(@post.user) %>
+        <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
+      <% else %>
+      <div class="flex edit_btns">
+        <div>
+          <%= link_to '編集する', edit_post_path(@post), class: "waves-effect waves-light btn amber darken-1" %>
+        </div>
+        <div>
+          <%= link_to '削除する', @post, method: :delete, data: { confirm: "#{@post.name}に行く予定を削除します。よろしいですか？"}, class: "waves-effect waves-light btn red" %>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+
+  <!-- <div class="pc_texts">
     <div class="row">
       <div class="col s12">
         <p class="chip chip_static white-text indigo"><%= Post.human_attribute_name(:description) %></p>
@@ -55,5 +78,4 @@
        <% end %>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
