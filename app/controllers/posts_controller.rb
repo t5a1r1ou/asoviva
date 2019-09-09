@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.page(params[:page]).per(9)
+    @posts = Post.page(params[:page]).includes(:user).per(9)
   end
 
   def create
