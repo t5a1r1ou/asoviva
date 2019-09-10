@@ -26,6 +26,12 @@
           <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           </li>
+          <li>
+            <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to 'アカウント設定', edit_user_registration_path %>
+          </li>
           <% else %>
           <li>
             <%= link_to 'ログイン', new_user_session_path %>
@@ -50,8 +56,11 @@
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           </li>
           <li>
-          <%= current_user.name %>
-        </li>
+            <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to 'アカウント設定', edit_user_registration_path %>
+          </li>
           <% else %>
           <li>
             <%= link_to 'ログイン', new_user_session_path %>
@@ -68,6 +77,11 @@
               <%= image_tag current_user.user_icon, class: "user-icon" %>
             <% end %>
           </li>
+          <% if controller.controller_name == 'posts' && controller.action_name == 'index' || controller.action_name == 'create' %>
+          <li>
+            <a href="#search_post" class="modal-trigger"><i class="material-icons">search</i></a>
+          </li>
+          <% end %>
         </ul>
         <% end %>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>

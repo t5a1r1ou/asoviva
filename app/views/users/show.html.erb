@@ -16,16 +16,20 @@
   <% if not @user.posts.empty? %>
     <h5><%= @user.name %>の投稿一覧</h5>
     <div class="cards-container">
-      <%= render partial: "posts/posts_cards", locals: { posts: @user.posts, bool: false } %>
+      <%= render partial: "posts/posts_cards", collection: @user.posts, as: :post, locals: { bool: false } %>
     </div>
   <% else %>
     <p>まだ投稿がありません</p>
   <% end %>
   <% if current_user?(@user) %>
     <h5><%= @user.name %>のキープした投稿一覧</h5>
-    <div class="cards-container">
-      <%= render partial: "posts/posts_cards", locals: { posts: @user.stocking_posts, bool: true } %>
+    <div class="cards-container fix-mb">
+      <%= render partial: "posts/posts_cards", collection: @stocking_posts, as: :post, locals: { bool: true } %>
+    </div>
+    <div class="row">
+      <%= link_to "戻る", :back %>
     </div>
   </div>
   <% end %>
+
 </div>

@@ -6,19 +6,23 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(9)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(10)
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
       flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
-      @posts = Post.page(params[:page]).per(9)
+      @q = Post.ransack(params[:q])
+      @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(10)
       render :index
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def show
     @comment = Comment.new

@@ -4,7 +4,7 @@
 <div id="create_post" class="modal">
   <div class="modal-content">
     <% if user_signed_in? %>
-      <%= render partial: 'posts/form', locals: { post: @post, title: "新規登録", path_default: posts_path } %>
+      <%= render partial: 'posts/form', locals: { post: @post, title: "行きたいとこ登録", path_default: posts_path, btn_text: '行きたい！' } %>
     <% else %>
     <div class="container">
       <%= render 'devise/shared/login_form' %>

@@ -1,0 +1,43 @@
+<div id="search_post" class="modal">
+  <div class="modal-content">
+    <div id="calender"></div>
+    <div class="row">
+      <h4>投稿検索</h4>
+      <%= search_form_for @q, class: "col s12" do |f| %>
+      <div class="row">
+        <div class="input-field col s8">
+          <%= f.search_field :name_cont, class: 'validate', id: 'input_name', :'data-length' => 20  %>
+          <%= f.label :name_cont %>
+        </div>
+        <!-- <div class="input-field col s4">
+          <%= f.select :category, options_for_select(Post.categories.keys) %>
+          <%= f.label :category %>
+        </div> -->
+      </div>
+      <!-- <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_area :description, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140 %>
+          <%= f.label :description %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_field :deadline, class: "datepicker" %>
+          <%= f.label :deadline %>
+        </div>
+        <div class="input-field col s6">
+          <%= f.number_field :count, value: 1 %>
+          <%= f.label :count %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.select :area, options_for_select(Post.areas.keys) %>
+          <%= f.label :area %>
+        </div>
+      </div> -->
+      <%= f.submit '検索', class: "btn-large wave-effect waves-light amber darken-1" %>
+      <% end %>
+    </div>
+  </div>
+</div>

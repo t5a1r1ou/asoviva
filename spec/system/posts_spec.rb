@@ -15,7 +15,7 @@ RSpec.describe 'Posts', type: :system do
       it '一覧画面に戻り、そのポスト名を含むフラッシュメッセージが表示される', js: true do
         visit posts_path
         click_link 'mode_edit'
-        expect(page).to have_content '新規登録'
+        expect(page).to have_content '行きたいとこ登録'
         fill_in 'post[name]', with: 'ロッキンジャパン'
         fill_in 'post[description]', with: 'あいみょん見たい'
         fill_in 'post[deadline]', with: Date.today
@@ -30,7 +30,7 @@ RSpec.describe 'Posts', type: :system do
       it '一覧画面に戻り、エラーメッセージが表示され、入力途中の内容がフォームに保持される', js: true do
         visit posts_path
         click_link 'mode_edit'
-        expect(page).to have_content '新規登録'
+        expect(page).to have_content '行きたいとこ登録'
         fill_in 'post[description]', with: 'あいみょん見たい'
         fill_in 'post[deadline]', with: Date.today
         fill_in 'post[count]', with: '3'
