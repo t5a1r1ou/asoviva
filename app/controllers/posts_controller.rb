@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(9)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(10)
   end
 
   def create
