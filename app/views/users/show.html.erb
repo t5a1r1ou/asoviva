@@ -23,9 +23,13 @@
   <% end %>
   <% if current_user?(@user) %>
     <h5><%= @user.name %>のキープした投稿一覧</h5>
-    <div class="cards-container">
+    <div class="cards-container fix-mb">
       <%= render partial: "posts/posts_cards", locals: { posts: @user.stocking_posts, bool: true } %>
+    </div>
+    <div class="row">
+      <%= link_to "戻る", :back %>
     </div>
   </div>
   <% end %>
+
 </div>
