@@ -1,6 +1,7 @@
 <div class="card-container_post">
   <div class="col s12 m4">
     <div class="card">
+      <%= render partial: 'posts/stock_btn', locals: {post: post} %>
       <div class="chip chip_position white-text <%= post.category_color %>"><%= post.category %></div>
       <div class="card-content">
         <% @contents = capture do %>

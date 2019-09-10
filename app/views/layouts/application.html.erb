@@ -77,7 +77,7 @@
               <%= image_tag current_user.user_icon, class: "user-icon" %>
             <% end %>
           </li>
-          <% if controller.controller_name == 'posts' && controller.action_name == 'index' %>
+          <% if controller.controller_name == 'posts' && controller.action_name == 'index' || controller.action_name == 'create' %>
           <li>
             <a href="#search_post" class="modal-trigger"><i class="material-icons">search</i></a>
           </li>
