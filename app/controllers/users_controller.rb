@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @post = Post.new
-    @posts = current_user.posts
+    @stocking_posts = @user.stocking_posts.includes(:user)
   end
 
   def follows
