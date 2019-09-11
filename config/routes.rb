@@ -13,12 +13,11 @@ Rails.application.routes.draw do
     resource :relationships, only: %i[create destroy]
     get :follows, on: :member
     get :followers, on: :member
-    get :commented, on: :member
-    get :comments, on: :member
   end
 
   resources :posts, except: :new do
     resource :stocks, only: %i[create destroy]
     resource :comments, only: %i[create destroy]
+    post :filter, on: :collection
   end
 end

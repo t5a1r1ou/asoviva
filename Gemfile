@@ -27,7 +27,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
-gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -40,6 +39,8 @@ gem 'aws-sdk-s3', require: false
 gem 'activerecord-nulldb-adapter'
 gem 'rubocop'
 gem 'ransack'
+gem 'pry-rails'
+gem 'pry-byebug'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

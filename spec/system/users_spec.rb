@@ -63,13 +63,11 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
-  describe 'ユーザーの削除', :focus do
+  describe 'ユーザーの削除' do
     it 'トップページにリダイレクトして、フラッシュが表示される', js: true do
       sign_in user
       visit edit_user_registration_path
       click_button 'delete_btn'
-      expect(page.driver.browser.switch_to.alert.text).to include 'アカウントを削除します'
-      page.driver.browser.switch_to.alert.accept
       expect(page.driver.browser.switch_to.alert.text).to include 'アカウントを削除します'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております'
@@ -95,7 +93,7 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    context '無効な値で登録しようとした時', :focus do
+    context '無効な値で登録しようとした時' do
       it 'プロフィール編集画面に戻り、値は保持されている', js: true do
         fill_in 'user[name]', with: ''
         fill_in 'user[profile]', with: 'Bobです'

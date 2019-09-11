@@ -6,8 +6,8 @@
       <%= search_form_for @q, class: "col s12" do |f| %>
       <div class="row">
         <div class="input-field col s8">
-          <%= f.search_field :name_cont, class: 'validate', id: 'input_name', :'data-length' => 20  %>
-          <%= f.label :name_cont %>
+          <%= f.search_field :name_cont, id: 'input_name' %>
+          <%= f.label :name_cont, '行きたいところの名前で検索' %>
         </div>
         <!-- <div class="input-field col s4">
           <%= f.select :category, options_for_select(Post.categories.keys) %>

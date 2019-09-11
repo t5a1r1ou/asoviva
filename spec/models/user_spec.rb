@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'avatarのバリデーション', :focus do
+  describe 'avatarのバリデーション' do
     context 'ファイルサイズが10MBを越える時' do
       it 'ファイルサイズが大きすぎますというエラーメッセージが返る' do
         user_too_large_avatar.valid?
