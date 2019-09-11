@@ -2,7 +2,7 @@
 <%= render "search_modal" %>
 <%= render partial: "layouts/errors_toast", locals: { element: @post } %>
 <%= render "layouts/toast" %>
-<% if params.nil? %>
+<% unless params.nil? %>
 <div class="container">
   <p>"<%= params[:q][:name_cont] %>" での検索結果</p>
 </div>
