@@ -75,30 +75,30 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'category_colorメソッドが正しく実装されている' do
-    context "post.categoryが'イベント'のとき" do
+    context 'post.categoryが:eventのとき' do
       it 'returns light-blue lighten-1' do
-        post.category = 'イベント'
+        post.category = :event
         expect(post.category_color).to eq 'light-blue lighten-1'
       end
     end
 
-    context "post.categoryが'観光'のとき" do
+    context 'post.categoryが:sightseeingのとき' do
       it 'returns purple lighten-1' do
-        post.category = '観光'
+        post.category = :sightseeing
         expect(post.category_color).to eq 'purple lighten-1'
       end
     end
 
-    context "post.categoryが'飲み会'のとき" do
+    context 'post.categoryが:drinkのとき' do
       it 'returns indigo lighten-1' do
-        post.category = '飲み会'
+        post.category = :drink
         expect(post.category_color).to eq 'indigo lighten-1'
       end
     end
 
-    context "post.categoryが'ランチ'のとき" do
+    context 'post.categoryが:lunchのとき' do
       it 'returns teal lighten-1' do
-        post.category = 'ランチ'
+        post.category = :lunch
         expect(post.category_color).to eq 'teal lighten-1'
       end
     end

@@ -4,7 +4,7 @@
 <%= render "layouts/toast" %>
 <% unless params[:q].nil? %>
 <div class="container">
-  <p>"<%= params[:q][:name_cont] %>" での検索結果</p>
+  <p><%= searched_name_by %><%= searched_category_by %><%= searched_area_by %> での検索結果</p>
 </div>
 <% end %>
 <div class="container">

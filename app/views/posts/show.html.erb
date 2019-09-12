@@ -2,7 +2,7 @@
 <div class="container fix-pb post_show_container">
   <div class="name-icon_box_post post_show">
     <div>
-      <div class="chip chip_position white-text <%= @post.category_color %>"><%= @post.category %></div>
+      <div class="chip chip_position white-text <%= @post.category_color %>"><%= @post.category_i18n %></div>
       <% @contents = capture do %>
       <div class="name-icon_box_post">
         <%= image_tag @post.user.user_icon, class: "icon_post" %><p class="black-text"><%= @post.user.name %></p>
@@ -15,12 +15,12 @@
       </div>
     </div>
   </div>
-  <div class="show_container">
+  <div class="show_container fix-pb">
     <p class="indigo-text"><%= Post.human_attribute_name(:description) %></p>
     <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
     <ul class="collection">
         <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:deadline) %></span><span class="collection_content"><%= @post.deadline %></span></li>
-        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area) %></span><span class="collection_content"><%= @post.area %></span></li>
+        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area) %></span><span class="collection_content"><%= @post.area_i18n %></span></li>
         <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:count) %></span><span class="collection_content"><%= @post.count %>人</span></li>
       </ul>
       <% if not current_user?(@post.user) %>
@@ -35,5 +35,8 @@
         </div>
       </div>
       <% end %>
+  </div>
+  <div class="row">
+    <%= link_to "戻る", :back %>
   </div>
 </div>
