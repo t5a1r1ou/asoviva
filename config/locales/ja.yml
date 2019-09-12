@@ -1,5 +1,22 @@
 ---
 ja:
+  enums:
+    post:
+      category:
+        event: 'イベント'
+        sightseeing: '観光'
+        drink: '飲み会'
+        lunch: 'ランチ'
+      area:
+        hokkaido: '北海道'
+        tohoku: '東北'
+        kanto: '関東'
+        chubu: '中部'
+        kinki: '近畿'
+        chugoku: '中国'
+        shikoku: '四国'
+        kyushu: '九州'
+        okinawa: '沖縄'
   activerecord:
     errors:
       messages:

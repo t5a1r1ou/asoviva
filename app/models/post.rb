@@ -17,22 +17,22 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
 
   enum area: {
-    '北海道' => 0,
-    '東北' => 1,
-    '関東' => 2,
-    '中部' => 3,
-    '近畿' => 4,
-    '中国' => 5,
-    '四国' => 6,
-    '九州' => 7,
-    '沖縄' => 8
+    hokkaido: 0,
+    tohoku: 1,
+    kanto: 2,
+    chubu: 3,
+    kinki: 4,
+    chugoku: 5,
+    shikoku: 6,
+    kyushu: 7,
+    okinawa: 8
   }
 
   enum category: {
-    'イベント' => 1,
-    '観光' => 2,
-    '飲み会' => 3,
-    'ランチ' => 4
+    event: 1,
+    sightseeing: 2,
+    drink: 3,
+    lunch: 4
   }
 
   belongs_to :user
@@ -51,7 +51,7 @@ class Post < ApplicationRecord
   end
 
   def category_color
-    case category
+    case category_i18n
     when 'イベント' then 'light-blue lighten-1'
     when '観光' then 'purple lighten-1'
     when '飲み会' then 'indigo lighten-1'

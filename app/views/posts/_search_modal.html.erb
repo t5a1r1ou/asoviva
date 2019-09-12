@@ -1,41 +1,31 @@
-<div id="search_post" class="modal">
+<div id="search_post" class="modal container">
   <div class="modal-content">
     <div id="calender"></div>
     <div class="row">
       <h4>投稿検索</h4>
       <%= search_form_for @q, class: "col s12" do |f| %>
       <div class="row">
-        <div class="input-field col s8">
-          <%= f.search_field :name_cont, id: 'input_name' %>
-          <%= f.label :name_cont, '行きたいところの名前で検索' %>
-        </div>
-        <!-- <div class="input-field col s4">
-          <%= f.select :category, options_for_select(Post.categories.keys) %>
-          <%= f.label :category %>
-        </div> -->
-      </div>
-      <!-- <div class="row">
         <div class="input-field col s12">
-          <%= f.text_area :description, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140 %>
-          <%= f.label :description %>
+          <%= f.search_field :name_cont, id: 'input_name' %>
+          <%= f.label :name_cont, '行きたいところで検索' %>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
+        <!-- <div class="input-field col s6">
           <%= f.text_field :deadline, class: "datepicker" %>
           <%= f.label :deadline %>
-        </div>
-        <div class="input-field col s6">
-          <%= f.number_field :count, value: 1 %>
-          <%= f.label :count %>
-        </div>
+        </div> -->
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <%= f.select :area, options_for_select(Post.areas.keys) %>
-          <%= f.label :area %>
+        <div class="input-field col s6">
+          <%= f.select :area_eq, Post.areas.map { |k, v| [Post.areas_i18n[k], v] }, :include_blank => '指定なし' %>
+          <%= f.label :area_eq, 'エリアで絞り込み' %>
         </div>
-      </div> -->
+        <div class="input-field col s6">
+          <%= f.select :category_eq, Post.categories.map { |k, v| [Post.categories_i18n[k], v] }, :include_blank => '指定なし' %>
+          <%= f.label :category_eq, 'カテゴリ' %>
+        </div>
+      </div>
       <%= f.submit '検索', class: "btn-large wave-effect waves-light amber darken-1" %>
       <% end %>
     </div>
