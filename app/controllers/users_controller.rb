@@ -32,12 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def commented
-    @posts = Post.where(user_id: params[:id])
-  end
-
-  def comments; end
-
   private
 
   def set_user

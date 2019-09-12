@@ -2,11 +2,17 @@
 <%= render "search_modal" %>
 <%= render partial: "layouts/errors_toast", locals: { element: @post } %>
 <%= render "layouts/toast" %>
-
+<% unless params[:q].nil? %>
+<div class="container">
+  <p>"<%= params[:q][:name_cont] %>" での検索結果</p>
+</div>
+<% end %>
 <div class="container">
   <div class="cards-container">
-    <% unless @posts.empty? %>
+    <% if not @posts.empty? %>
     <%= render partial: "posts_cards", collection: @posts, as: :post, locals: { bool: true } %>
+    <% elsif not params.nil? %>
+    <p>条件に一致する投稿が見つかりません</p>
     <% else %>
     <p>まだ投稿がありません</p>
   </div>
