@@ -19,7 +19,7 @@
     <p class="indigo-text"><%= Post.human_attribute_name(:description) %></p>
     <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
     <ul class="collection">
-        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:deadline) %></span><span class="collection_content"><%= @post.deadline %></span></li>
+        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:date) %></span><span class="collection_content"><%= @post.date %></span></li>
         <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area) %></span><span class="collection_content"><%= @post.area_i18n %></span></li>
         <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:count) %></span><span class="collection_content"><%= @post.count %>人</span></li>
       </ul>

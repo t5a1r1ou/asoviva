@@ -1,6 +1,5 @@
 <div id="search_post" class="modal container">
   <div class="modal-content">
-    <div id="calender"></div>
     <div class="row">
       <h4>投稿検索</h4>
       <%= search_form_for @q, class: "col s12" do |f| %>
@@ -11,10 +10,10 @@
         </div>
       </div>
       <div class="row">
-        <!-- <div class="input-field col s6">
-          <%= f.text_field :deadline, class: "datepicker" %>
-          <%= f.label :deadline %>
-        </div> -->
+        <div class="input-field col s12">
+          <%= f.text_field :date_eq, class: "datepicker" %>
+          <%= f.label :date_eq, '暇な日で検索' %>
+        </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
@@ -23,7 +22,7 @@
         </div>
         <div class="input-field col s6">
           <%= f.select :category_eq, Post.categories.map { |k, v| [Post.categories_i18n[k], v] }, :include_blank => '指定なし' %>
-          <%= f.label :category_eq, 'カテゴリ' %>
+          <%= f.label :category_eq, 'カテゴリで絞り込み' %>
         </div>
       </div>
       <%= f.submit '検索', class: "btn-large wave-effect waves-light amber darken-1" %>

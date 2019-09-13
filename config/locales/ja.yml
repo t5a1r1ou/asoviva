@@ -33,10 +33,10 @@ ja:
         description: 募集内容
         created_at: 登録日時
         updated_at: 更新日時
-        area: エリア
+        area_i18n: エリア
         count: 何人で？
-        deadline: いつまでに？
-        category: カテゴリ
+        date: いつ？
+        category_i18n: カテゴリ
       comment:
         body: コメント
   date:

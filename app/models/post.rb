@@ -12,8 +12,7 @@ class Post < ApplicationRecord
     less_than_or_equal_to: 20,
     greater_than: 0
   }
-  validates :deadline, presence: true
-  validate :deadline_future
+  validate :date_future
   validates :user_id, presence: true
 
   enum area: {
@@ -59,8 +58,8 @@ class Post < ApplicationRecord
     end
   end
 
-  def deadline_future
-    errors.add(:deadline, 'には今日以降の日付を入力してください') if deadline && deadline < Date.today
+  def date_future
+    errors.add(:date, 'には今日以降の日付を入力してください') if date && date < Date.today
   end
 
   def long_title_class
