@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   }
   resources :users, only: %i[index show edit update] do
     resource :relationships, only: %i[create destroy]
-    get :follows, on: :member
-    get :followers, on: :member
+    post :follows, on: :collection
+    post :followers, on: :collection
+    post :mutual_follow, on: :collection
   end
 
   resources :posts, except: :new do
     resource :stocks, only: %i[create destroy]
     resource :comments, only: %i[create destroy]
-    post :filter, on: :collection
   end
 end

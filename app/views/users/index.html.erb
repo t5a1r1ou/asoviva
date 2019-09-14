@@ -1,29 +1,39 @@
-<div class="cards-container container">
-  <% unless @users.empty? %>
-  <% @users.each do |user| %>
-    <div class="card-container_user">
-        <div class="card">
-          <%= render partial: 'users/follow_btn', locals: { user: user } %>
-          <div class="card-content">
-            <%= link_to user do %>
-            <span class="card-title black-text">
-              <div class="name-icon_box_user">
-                <%= image_tag user.user_icon, class: "icon_users" %>
-                <div class="users_box">
-                  <span class="users_name"><%= user.name %></span>
-                  <p class="users_area_text grey-text"><%= user.area %></p>
-                </div>
-              </div>
-            </span>
-            <% end %>
-            <p class="black-text">
-              <p><%= user.profile.presence || 'プロフィールが設定されていません' %></p>
-            </p>
-          </div>
+<div class="container fix-pb">
+  <div class="row">
+    <div class="flex fix-mb">
+      <div class="fix-mr">
+        <p class="grey-text">フォロー中</p>
+        <div class="switch">
+          <label>
+            オフ
+            <input type="checkbox" id="follows_checkbox">
+            <span class="lever" id="follows_switch"></span>
+            オン
+          </label>
         </div>
+      </div>
+      <div>
+        <p class="grey-text">フォロワー</p>
+        <div class="switch">
+          <label>
+            オフ
+            <input type="checkbox" id="followers_checkbox">
+            <span class="lever" id="followers_switch"></span>
+            オン
+          </label>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <% else %>
-  <p>まだユーザーがいません</p>
-<% end %>
+    <%= link_to 'フォロー中', follows_users_path, method: :post, class: "hidden_link", id: 'follows_link', remote: true %>
+    <%= link_to 'フォロワー', followers_users_path, method: :post, class: "hidden_link", id: 'followers_link', remote: true %>
+    <%= link_to '相互フォロー', mutual_follow_users_path, method: :post, class: "hidden_link", id: 'mutual_followers_link', remote: true %>
+    <%= link_to '絞り込み解除', users_path, class: "hidden_link", id: 'all_users_link', remote: true %>
+  </div>
+  <div class="cards-container" id="users">
+    <% unless @users.empty? %>
+    <%= render partial: 'users/users_cards', collection: @users, as: :user %>
+    <% else %>
+    <p>まだユーザーがいません</p>
+    <% end %>
+  </div>
 </div>

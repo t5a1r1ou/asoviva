@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, except: :index
+  before_action :set_user, except: %i[index follows followers mutual_follow]
   before_action :authenticate_user!
   before_action :current_user!, only: %i[commented comments]
 
   def index
     @users = User.with_attached_avatar
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -15,11 +19,24 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @users = @user.followings
+    @users = current_user.followings.with_attached_avatar
+    respond_to do |format|
+      format.js
+    end
   end
 
   def followers
-    @users = @user.followers
+    @users = current_user.followers.with_attached_avatar
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def mutual_follow
+    @users = current_user.mutual_followers
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit; end
