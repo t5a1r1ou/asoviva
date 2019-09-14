@@ -9,6 +9,11 @@
       </div>
       <% end %>
       <%= link_to @contents, user_path(@post.user) %>
+      <div class="container">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image %>
+        <% end %>
+      </div>
       <h3 class="post_title"><%= @post.name %><span class="title-suffix">に行きたい</span></h3>
       <div class="stock_show">
         <%= render partial: 'posts/stock_btn', locals: {post: @post} %>

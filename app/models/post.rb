@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   }
   validate :date_future
   validates :user_id, presence: true
+  validates :image, presence: true
 
   enum area: {
     hokkaido: 0,
@@ -40,6 +41,8 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :commented_users
+
+  has_one_attached :image
 
   def count_about
     case count
@@ -80,5 +83,10 @@ class Post < ApplicationRecord
 
   def commented_by(user)
     comments.where(user_id: user.id)
+  end
+
+  def create_ogp
+    text = "#{name}に一緒に行く人募集"
+    OgpCreator.build(text).tempfile.open
   end
 end

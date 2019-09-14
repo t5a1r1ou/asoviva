@@ -10,7 +10,9 @@
         </div>
         <% end %>
         <%= link_to_if bool, @contents, user_path(post.user) %>
-        <%= image_tag "dammy_not_selected.png", class: 'post_image' %>
+        <% if post.image.attached? %>
+          <%= image_tag post.image %>
+        <% end %>
         <%= link_to post do %>
         <span class="card-title black-text <%= post.long_title_class %>">
           <%= post.name %><span class="title-suffix">に行きたい！</span>
