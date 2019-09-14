@@ -7,12 +7,13 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(10)
+    @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).per(10)
   end
 
   # rubocop:disable Metrics/AbcSize
   def create
     @post = current_user.posts.new(post_params)
+    @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_profile.png")
     if @post.save
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
@@ -53,6 +54,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :description, :area, :count, :date, :category)
+    params.require(:post).permit(:name, :description, :area, :count, :date, :category, :image)
   end
 end

@@ -38,6 +38,16 @@ footer {
   z-index: 100;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+}
+
 .flex {
   display: -webkit-flex;
   display: -ms-flex;
