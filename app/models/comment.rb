@@ -7,6 +7,6 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
 
   def commented_user
-    User.find(self.user_id)
+    User.find(user_id)
   end
 end

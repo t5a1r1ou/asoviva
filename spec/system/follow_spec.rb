@@ -15,15 +15,13 @@ RSpec.describe 'Follows', type: :system do
     it 'フォローのつけ外しができる', js: true do
       visit users_path
       expect do
-        find('#follow-btn_2').find('.btn_follow').click
-        find('#follow-btn_2').find('.btn_follow')
+        find('#follow-btn_2', match: :first).find('.btn_follow').click
+        find('#follow-btn_2', match: :first).find('.btn_follow')
       end.to change(user.followings, 'count').by(1)
-      pending 'なぜか通らない'
       expect do
-        find('#follow-btn_2').find('.btn_follow').click
-        find('#follow-btn_2').find('.btn_follow')
+        find('#follow-btn_2', match: :first).find('.btn_follow').click
+        find('#follow-btn_2', match: :first).find('.btn_follow')
       end.to change(user.followings, 'count').by(-1)
-      pending 'なぜか通らない'
     end
   end
 
