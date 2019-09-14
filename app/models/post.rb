@@ -77,4 +77,8 @@ class Post < ApplicationRecord
   def commented_by?(user)
     comments.where(user_id: user.id).exists?
   end
+
+  def commented_by(user)
+    comments.where(user_id: user.id)
+  end
 end
