@@ -13,7 +13,6 @@
   <% if current_user?(@user) %>
     <%= link_to 'プロフィールを編集する', edit_user_path, class: "btn indigo fix-mb" %>
   <% end %>
-  <% if not @user.posts.empty? %>
     <div class="row">
       <div class="col s12">
         <ul class="tabs">
@@ -42,16 +41,8 @@
       </div>
       <% end %>
     </div>
-
-  <% else %>
-    <p>まだ投稿がありません</p>
-  <% end %>
-  <% if current_user?(@user) %>
-
     <div class="row">
       <%= link_to "戻る", :back %>
     </div>
   </div>
-  <% end %>
-
 </div>
