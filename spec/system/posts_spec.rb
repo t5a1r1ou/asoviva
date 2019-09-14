@@ -18,7 +18,7 @@ RSpec.describe 'Posts', type: :system do
         expect(page).to have_content '行きたいとこ登録'
         fill_in 'post[name]', with: 'ロッキンジャパン'
         fill_in 'post[description]', with: 'あいみょん見たい'
-        fill_in 'post[deadline]', with: Date.today
+        fill_in 'post[date]', with: Date.today
         fill_in 'post[count]', with: '3'
         click_button 'commit'
         expect(page).to have_content 'ロッキンジャパンに行く予定を登録しました！'
@@ -32,7 +32,7 @@ RSpec.describe 'Posts', type: :system do
         click_link 'mode_edit'
         expect(page).to have_content '行きたいとこ登録'
         fill_in 'post[description]', with: 'あいみょん見たい'
-        fill_in 'post[deadline]', with: Date.today
+        fill_in 'post[date]', with: Date.today
         fill_in 'post[count]', with: '3'
         click_button 'commit'
         expect(page).to have_content 'mode_edit'

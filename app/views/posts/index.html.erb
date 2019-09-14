@@ -2,6 +2,7 @@
 <%= render "search_modal" %>
 <%= render partial: "layouts/errors_toast", locals: { element: @post } %>
 <%= render "layouts/toast" %>
+<div class="calender"></div>
 <% unless params[:q].nil? %>
 <div class="container">
   <p><%= searched_name_by %><%= searched_category_by %><%= searched_area_by %> での検索結果</p>

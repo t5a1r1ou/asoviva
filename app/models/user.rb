@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follower
 
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy
-  has_many :followers, through: :relationships, source: :following
+  has_many :followers, through: :reverse_of_relationships, source: :following
 
   has_many :comments, dependent: :destroy
   has_many :sent_comment_posts, through: :comments, source: :post
@@ -61,6 +61,10 @@ class User < ApplicationRecord
 
   def followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
+  end
+
+  def mutual_followers
+    followings.select { |follow| followed_by?(follow) }
   end
 
   protected

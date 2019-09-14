@@ -1,0 +1,24 @@
+<div class="card-container_user">
+  <div class="card">
+    <%= render partial: 'users/follow_btn', locals: { user: user } %>
+    <div class="card-content">
+      <%= link_to user do %>
+      <span class="card-title black-text">
+        <div class="name-icon_box_user">
+          <%= image_tag user.user_icon, class: "icon_users" %>
+          <div class="users_box">
+            <span class="users_name"><%= user.name %></span>
+            <p class="users_area_text grey-text"><%= user.area %></p>
+          </div>
+        </div>
+        <% if current_user.followed_by?(user) %>
+        <p class="grey-text followed_text">フォローされています</p>
+        <% end %>
+      </span>
+      <% end %>
+      <p class="black-text">
+        <p><%= user.profile.presence || 'プロフィールが設定されていません' %></p>
+      </p>
+    </div>
+  </div>
+</div>

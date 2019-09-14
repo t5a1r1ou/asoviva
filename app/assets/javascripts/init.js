@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       autoClose: true,
       format: "yyyy-mm-dd",
       minDate: today,
-      container: document.querySelector('#calender'),
+      container: document.querySelector('.calender'),
       i18n: {
         cancel: 'キャンセル',
         done: '決定',

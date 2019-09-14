@@ -15,7 +15,6 @@ RSpec.describe Post, type: :model do
 
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :area }
-  it { is_expected.to validate_presence_of :deadline }
   it { is_expected.to validate_presence_of :category }
   it { is_expected.to validate_numericality_of(:count).only_integer }
 
@@ -26,17 +25,17 @@ RSpec.describe Post, type: :model do
   it { is_expected.to validate_numericality_of(:count).is_less_than_or_equal_to(20) }
   it { is_expected.to validate_numericality_of(:count).is_greater_than(0) }
 
-  describe 'validate deadline_future' do
+  describe 'validate date_future' do
     context '今日の日付に設定した場合' do
       it '成功する' do
-        post.deadline = Date.today
+        post.date = Date.today
         expect(post).to be_valid
       end
     end
 
     context '昨日の日付に設定した場合' do
       it '失敗する' do
-        post.deadline = Date.today - 1
+        post.date = Date.today - 1
         expect(post).to_not be_valid
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_042123) do
+ActiveRecord::Schema.define(version: 2019_09_12_172752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_042123) do
     t.text "description", default: "とりあえず遊びたーい", null: false
     t.integer "area", null: false
     t.integer "count", null: false
-    t.date "deadline", null: false
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category", default: 1, null: false
