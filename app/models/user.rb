@@ -75,6 +75,7 @@ class User < ApplicationRecord
       uid = auth[:uid]
       user_name = auth[:info][:name]
       image_url = auth[:info][:image]
+      binding.pry
       uri = URI.parse(image_url)
       image = uri.open
       email = User.dummy_email(auth)
