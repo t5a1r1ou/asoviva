@@ -163,6 +163,14 @@ footer {
     background-color: #7986cb;
 }
 
+.tabs .tab a:focus.active {
+  background-color: #e8eaf6;
+}
+
+.tabs .indicator {
+  background-color: #7986cb;
+}
+
 .pc_texts {
   @include tab {
     font-size: 25px;

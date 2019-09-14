@@ -19,6 +19,7 @@ RSpec.describe 'Stocks', type: :system do
         find('.stock-text')
       end.to change(user.stocks, :count).by(1)
       visit user_path(user)
+      find('#keep_tab').click
       expect(page).to have_content 'ららぽーと横浜'
       visit posts_path
       expect do
@@ -38,6 +39,7 @@ RSpec.describe 'Stocks', type: :system do
         find('.stock-text')
       end.to change(user.stocks, :count).by(1)
       visit user_path(user)
+      find('#keep_tab').click
       expect(page).to have_content 'ららぽーと横浜'
       visit post_path(post)
       expect do
