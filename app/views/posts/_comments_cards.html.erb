@@ -1,0 +1,15 @@
+<div class="col s12">
+  <div class="card">
+    <div class="card-content">
+      <div class="name-icon_box_post">
+        <%= link_to user_path(comment.commented_user) do %>
+        <%= image_tag comment.commented_user.user_icon, class: "icon_post" %><p class="black-text"><%= comment.commented_user.name %></p>
+        <% end %>
+      </div>
+      <% if comment.body %>
+        <p class="grey-text">コメント</p>
+        <p><%= comment.body %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @stocking_posts = @user.stocking_posts.includes(:user)
+    @sent_comment_posts = @user.sent_comment_posts.includes(user: { avatar_attachment: :blob })
   end
 
   def follows

@@ -11,30 +11,16 @@ RSpec.describe 'Comments', type: :system do
     sign_in user
     visit post_path(post)
     find("#comments-form_#{post.id}").find('.comment-btn').click
-    fill_in 'comment[body]', with: 'なにそれ行きた'
+    fill_in 'comment[body]', with: '何それ行きた'
   end
 
-  describe 'コメントしたユーザー' do
-    it 'コメントを送るとコメント済みの投稿画面にコメントした投稿とコメントが表示される', js: true do
-      expect do
-        click_button 'commit'
-      end.to change(user.comments, :count).by(1)
-      expect(page).to have_content 'リクエストの送信が完了しました'
-      expect(page).to have_content 'リクエスト済み'
-    end
-  end
-
-  describe 'コメントされたユーザー' do
-    it 'コメントされると受信したコメント一覧にきたコメントとユーザー名が表示される' do
-      expect do
-        click_button 'commit'
-      end.to change(user.comments, :count).by(1)
-      sign_out user
-      sign_in user_received
-      visit post_path(post)
-      pending '修正まだできていないのであとで直す'
-      expect(page).to have_content user.name
-      expect(page).to have_content 'なにそれ行きた'
-    end
+  it 'コメントを送るとコメント済みの画面にコメントした投稿とコメントが表示される', js: true do
+    expect do
+      click_button 'commit'
+    end.to change(user.comments, :count).by(1)
+    expect(page).to have_content 'リクエストの送信が完了しました'
+    expect(page).to have_content 'リクエスト済み'
+    expect(page).to have_content user.name
+    expect(page).to have_content '何それ行きた'
   end
 end

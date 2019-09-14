@@ -31,7 +31,7 @@
       <% if current_user?(@user) %>
       <div id="requested" class="col s12">
         <div class="cards-container">
-          <%= render partial: "posts/posts_cards", collection: @user.sent_comment_posts, as: :post, locals: { bool: true } %>
+          <%= render partial: "posts/posts_cards", collection: @sent_comment_posts, as: :post, locals: { bool: true } %>
         </div>
       </div>
       <div id="keep" class="col s12">
