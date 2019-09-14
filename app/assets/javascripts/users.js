@@ -34,21 +34,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   };
-
-  var request_tab = document.getElementById('request_tab');
-  var posts_tab = document.getElementById('posts_tab');
-  var keep_tab = document.getElementById('keep_tab');
-
-  request_tab.addEventListener('click', function () {
-    console.log('clicked!');
-  });
-
-  posts_tab.addEventListener('click', function () {
-    console.log('clicked!');
-  });
-
-  keep_tab.addEventListener('click', function () {
-    console.log('clicked!');
-  });
-
 });
