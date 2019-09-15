@@ -1,4 +1,6 @@
-<% set_meta_tags title: @post.name, og: { title: @post.name, type: 'article', image: app.url_for(@post.image) } %>
+<% if @post.image.attached? %>
+  <% set_meta_tags title: @post.name, og: { title: @post.name, type: 'article', image: rails_representation_url(@post.image.variant(resize: "150"), only_path: true) } %>
+<% end %>
 <%= render "layouts/toast" %>
 <div class="container fix-pb post_show_container">
   <div class="name-icon_box_post post_show">
