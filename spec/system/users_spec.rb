@@ -41,7 +41,7 @@ RSpec.describe 'Users', type: :system do
     before do
       sign_in user
       visit edit_user_registration_path
-      fill_in 'user[name]', with: 'nakai'
+      fill_in 'user[email]', with: 'new_test@example.com'
     end
 
     context '有効な値が入力されたとき' do
@@ -54,11 +54,11 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    context '無効な値が入力されたとき' do
+    context '現在のパスワードが入力されなかったとき' do
       it '編集画面が再度描写される', js: true do
         click_button 'commit'
         expect(page).to have_content '現在のパスワードを入力してください'
-        expect(page).to have_xpath("//input[@value='nakai']")
+        expect(page).to have_xpath("//input[@value='new_test@example.com']")
       end
     end
   end
@@ -114,7 +114,7 @@ RSpec.describe 'Users', type: :system do
 
       it 'ログインをするとユーザー数が増え、アバターが取得できる', js: true do
         expect do
-          click_link 'Twitterでログイン'
+          click_link 'Twitterではじめる'
         end.to change(User, :count).by(1)
         expect(page).to have_content 'プロフィール設定'
         expect(page).to have_content 'Twitter アカウントによる認証に成功しました'
@@ -132,7 +132,7 @@ RSpec.describe 'Users', type: :system do
 
       it 'ログインをするとユーザー数が増え、アバターが取得できる', js: true do
         expect do
-          click_link 'Googleでログイン'
+          click_link 'Googleではじめる'
         end.to change(User, :count).by(1)
         expect(page).to have_content 'プロフィール設定'
         expect(page).to have_content 'Google アカウントによる認証に成功しました'

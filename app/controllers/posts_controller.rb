@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).per(10)
+    @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(10)
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     else
       flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
       @q = Post.ransack(params[:q])
-      @posts = @q.result.page(params[:page]).includes(user: { avatar_attachment: :blob }).per(10)
+      @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(10)
       render :index
     end
   end
