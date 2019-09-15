@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @tweet_url = "https://twitter.com/intent/tweet?url=#{request.url}&text=#{@post.name}に一緒に行く人募集。#{@post.description}"
   end
 
   def edit
