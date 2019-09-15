@@ -64,7 +64,19 @@ class User < ApplicationRecord
   end
 
   def mutual_followers
-    followings.select { |follow| followed_by?(follow) }
+    followings.with_attached_avatar.select { |follow| followed_by?(follow) }
+  end
+
+  def attached_posts(posts)
+    posts.with_attached_image
+  end
+
+  def attached_users(users)
+    users.with_attached_avatar
+  end
+
+  def attached_user_posts(posts)
+    posts.includes(user: { avatar_attachment: :blob }).with_attached_image
   end
 
   protected

@@ -15,26 +15,21 @@ class UsersController < ApplicationController
 
   def show
     @post = Post.new
-    @stocking_posts = @user.stocking_posts.includes(:user)
-    @sent_comment_posts = @user.sent_comment_posts.includes(user: { avatar_attachment: :blob })
   end
 
   def follows
-    @users = current_user.followings.with_attached_avatar
     respond_to do |format|
       format.js
     end
   end
 
   def followers
-    @users = current_user.followers.with_attached_avatar
     respond_to do |format|
       format.js
     end
   end
 
   def mutual_follow
-    @users = current_user.mutual_followers
     respond_to do |format|
       format.js
     end
