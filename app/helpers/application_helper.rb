@@ -5,6 +5,7 @@ module ApplicationHelper
     current_user == user
   end
 
+  # rubocop:disable Metrics/MethodLength
   def default_meta_tags
     {
       site: 'asoviva!',
@@ -27,11 +28,12 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         image: image_url('dammy_man.png'),
-        locale: 'ja_JP',
+        locale: 'ja_JP'
       },
       twitter: {
         card: 'summary_large_image'
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
