@@ -1,5 +1,5 @@
 <% if @post.image.attached? %>
-  <% set_meta_tags title: @post.name, og: { title: @post.name, type: 'article', image: rails_representation_url(@post.image.variant(resize: "150"), only_path: true) } %>
+  <% set_meta_tags title: @post.name, og: { title: @post.name, type: 'article', image: rails_representation_url(@post.image.variant(resize: "150"), disposition: :inline) } %>
 <% end %>
 <%= render "layouts/toast" %>
 <div class="container fix-pb post_show_container">
