@@ -11,5 +11,9 @@ FactoryBot.define do
     trait :desc_nil do
       name 'テスト'
     end
+
+    trait :with_image do
+      image fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test_man.png'))
+    end
   end
 end

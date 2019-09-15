@@ -11,7 +11,9 @@
         <% end %>
         <%= link_to_if bool, @contents, user_path(post.user) %>
         <% if post.image.attached? %>
-          <%= image_tag post.image %>
+          <%= link_to post do %>
+            <%= image_tag post.image %>
+          <% end %>
         <% end %>
         <%= link_to post do %>
         <span class="card-title black-text <%= post.long_title_class %>">

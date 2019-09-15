@@ -1,1 +1,1 @@
-document.getElementById("users").innerHTML = "<%= escape_javascript(render partial: 'users/users_cards', collection: @users, as: :user) %>"
+document.getElementById("users").innerHTML = "<%= escape_javascript(render partial: 'users/users_cards', collection: current_user.attached_users(current_user.followers), as: :user) %>"
