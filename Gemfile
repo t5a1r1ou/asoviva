@@ -42,6 +42,7 @@ gem 'ransack'
 gem 'pry-rails'
 gem 'pry-byebug'
 gem 'enum_help'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
