@@ -54,7 +54,7 @@ RSpec.describe 'Posts', type: :system do
         click_button 'commit'
         expect(page).to have_content 'ロッキンジャパンに行く予定を更新しました！'
         expect(page).to have_content 'mode_edit'
-        expect(Post.first.image.filename.to_s).to eq "ロッキンジャパン_image.png"
+        expect(Post.first.image.filename.to_s).to eq 'ロッキンジャパン_image.png'
       end
     end
 
