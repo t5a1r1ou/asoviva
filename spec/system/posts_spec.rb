@@ -11,8 +11,8 @@ RSpec.describe 'Posts', type: :system do
   end
 
   describe 'ポストの作成' do
-    context '成功したとき' do
-      it '一覧画面に戻り、そのポスト名を含むフラッシュメッセージが表示される', js: true do
+    context '有効な値が入力されたとき' do
+      it '一覧画面に戻り、フラッシュメッセージが表示され、画像が生成される', js: true do
         visit posts_path
         click_link 'mode_edit'
         expect(page).to have_content '行きたいとこ登録'
@@ -23,10 +23,11 @@ RSpec.describe 'Posts', type: :system do
         click_button 'commit'
         expect(page).to have_content 'ロッキンジャパンに行く予定を登録しました！'
         expect(page).to have_content 'mode_edit'
+        expect(Post.first.image.filename).to eq 'ロッキンジャパン_image.png'
       end
     end
 
-    context '失敗したとき' do
+    context '無効な値が入力されたとき' do
       it '一覧画面に戻り、エラーメッセージが表示され、入力途中の内容がフォームに保持される', js: true do
         visit posts_path
         click_link 'mode_edit'
@@ -45,18 +46,19 @@ RSpec.describe 'Posts', type: :system do
   end
 
   describe 'ポストの更新' do
-    context '成功したとき' do
-      it '一覧画面に戻り、そのポスト名を含むフラッシュメッセージが表示される', js: true do
+    context '有効な値が入力されたとき' do
+      it '一覧画面に戻り、フラッシュメッセージが表示され、画像名が更新される', js: true do
         visit post_path(post)
         click_link '編集する'
         fill_in 'post[name]', with: 'ロッキンジャパン'
         click_button 'commit'
         expect(page).to have_content 'ロッキンジャパンに行く予定を更新しました！'
         expect(page).to have_content 'mode_edit'
+        expect(Post.first.image.filename.to_s).to eq "ロッキンジャパン_image.png"
       end
     end
 
-    context '失敗したとき' do
+    context '無効な値が入力されたとき' do
       it '編集画面に戻り、入力途中の内容がフォームに保持される', js: true do
         visit post_path(post)
         click_link '編集する'

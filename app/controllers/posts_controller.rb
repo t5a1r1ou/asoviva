@@ -13,8 +13,8 @@ class PostsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def create
     @post = current_user.posts.new(post_params)
-    @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_profile.png")
     if @post.save
+      @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_image.png")
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
       flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
@@ -36,6 +36,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_image.png")
       redirect_to posts_url, notice: "#{@post.name}に行く予定を更新しました！"
     else
       flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'

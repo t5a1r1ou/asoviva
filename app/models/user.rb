@@ -96,7 +96,7 @@ class User < ApplicationRecord
         user.name = user_name
         user.email = email
         user.password = password
-        user.avatar.attach(io: image, filename: "#{user.name}_profile.png")
+        user.avatar.attach(io: image, filename: "#{user.name}_avatar.png")
       end
     end
   end
