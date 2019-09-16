@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(10)
+    @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page_setting)
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -17,9 +17,8 @@ class PostsController < ApplicationController
       @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_image.png")
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
-      flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
       @q = Post.ransack(params[:q])
-      @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(10)
+      @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page_setting)
       render :index
     end
   end
@@ -30,16 +29,13 @@ class PostsController < ApplicationController
     @tweet_url = "https://twitter.com/intent/tweet?url=#{request.url}&text=#{@post.name}に一緒に行く人募集。#{@post.description}"
   end
 
-  def edit
-    flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
       @post.image.attach(io: @post.create_ogp, filename: "#{@post.name}_image.png")
       redirect_to posts_url, notice: "#{@post.name}に行く予定を更新しました！"
     else
-      flash.now[:alert] = 'エリア、カテゴリが初期化されています。ご注意ください'
       render :edit
     end
   end

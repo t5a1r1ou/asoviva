@@ -38,7 +38,6 @@ RSpec.describe 'Posts', type: :system do
         click_button 'commit'
         expect(page).to have_content 'mode_edit'
         expect(page).to have_content 'どこ行きたい？を入力してください'
-        expect(page).to have_content 'エリア、カテゴリが初期化されています。ご注意ください'
         click_link 'mode_edit'
         expect(page).to have_content 'あいみょん見たい'
       end
@@ -49,7 +48,7 @@ RSpec.describe 'Posts', type: :system do
     context '有効な値が入力されたとき' do
       it '一覧画面に戻り、フラッシュメッセージが表示され、画像名が更新される', js: true do
         visit post_path(post)
-        click_link '編集する'
+        click_link '編集'
         fill_in 'post[name]', with: 'ロッキンジャパン'
         click_button 'commit'
         expect(page).to have_content 'ロッキンジャパンに行く予定を更新しました！'
@@ -61,11 +60,10 @@ RSpec.describe 'Posts', type: :system do
     context '無効な値が入力されたとき' do
       it '編集画面に戻り、入力途中の内容がフォームに保持される', js: true do
         visit post_path(post)
-        click_link '編集する'
+        click_link '編集'
         fill_in 'post[name]', with: ''
         click_button 'commit'
         expect(page).to have_content 'どこ行きたい？を入力してください'
-        expect(page).to have_content 'エリア、カテゴリが初期化されています。ご注意ください'
         expect(page).to have_content '新作の映画を見たい'
       end
     end
@@ -76,7 +74,7 @@ RSpec.describe 'Posts', type: :system do
       visit posts_path
       expect(page).to have_content 'ららぽーと横浜'
       visit post_path(post)
-      click_link '削除する'
+      click_link '削除'
       expect(page.driver.browser.switch_to.alert.text).to include 'ららぽーと横浜に行く予定を削除します'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content 'ららぽーと横浜に行く予定を削除しました'

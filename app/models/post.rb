@@ -86,7 +86,8 @@ class Post < ApplicationRecord
   end
 
   def create_ogp
-    text = "#{name}に一緒に行く人を#{count - 1}人募集"
+    text =
+      count != 1 ? "#{name}に一緒に行く人を#{count - 1}人募集" : "#{name}に行きたい"
     OgpCreator.build(text).tempfile.open
   end
 end

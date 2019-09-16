@@ -1,0 +1,8 @@
+defaults: &defaults
+  page_setting: 10
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults
