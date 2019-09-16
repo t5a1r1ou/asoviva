@@ -41,38 +41,6 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe 'count_aboutメソッドが正しく実装されている' do
-    context 'post.countが1の時' do
-      it '「1人」' do
-        post.count = 1
-        expect(post.count_about).to eq '1人'
-      end
-    end
-
-    context 'post.countが2から4の時' do
-      context '2の時' do
-        it '「2~4人」' do
-          post.count = 2
-          expect(post.count_about).to eq '2~4人'
-        end
-      end
-
-      context '4の時' do
-        it '「2~4人」' do
-          post.count = 4
-          expect(post.count_about).to eq '2~4人'
-        end
-      end
-    end
-
-    context 'post.countが5以上の時' do
-      it '「ワイワイ」' do
-        post.count = 5
-        expect(post.count_about).to eq 'ワイワイ'
-      end
-    end
-  end
-
   describe 'category_colorメソッドが正しく実装されている' do
     context 'post.categoryが:eventのとき' do
       it 'returns light-blue lighten-1' do

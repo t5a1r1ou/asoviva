@@ -300,6 +300,7 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    settingslogic (2.0.9)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -374,6 +375,7 @@ DEPENDENCIES
   rspec-rails (~> 3.8.0)
   rubocop
   sass-rails (~> 5.0)
+  settingslogic
   shoulda-matchers!
   spring
   spring-commands-rspec
