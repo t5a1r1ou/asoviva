@@ -14,14 +14,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -36,7 +28,6 @@ gem 'omniauth-twitter'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
-gem 'activerecord-nulldb-adapter'
 gem 'rubocop'
 gem 'ransack'
 gem 'pry-rails'
@@ -66,5 +57,4 @@ group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

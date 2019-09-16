@@ -7,7 +7,7 @@
         <%= image_tag comment.commented_user.user_icon, class: "icon_post" %><p class="black-text"><%= comment.commented_user.name %></p>
         <% end %>
       </div>
-      <% if comment.body %>
+      <% if comment.body? %>
         <p class="grey-text">コメント</p>
         <p><%= comment.body %></p>
       <% end %>

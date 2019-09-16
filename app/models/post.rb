@@ -58,11 +58,11 @@ class Post < ApplicationRecord
   end
 
   def long_title_class
-    'name_long' if name.split(//).size > Settings.post.name_long
+    'name_long' if name.split(//).size > Settings.post.long_name
   end
 
   def description_digest
-    description.truncate(Settings.post.description_digest)
+    description.truncate(Settings.post.long_description)
   end
 
   def stocked_by?(user)

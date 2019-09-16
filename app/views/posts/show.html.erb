@@ -43,22 +43,22 @@
         </div>
         <div>
           <%= link_to @tweet_url, target: ["_blank"], class: "waves-effect waves-light btn blue" do %>
-          Twitterで募集する
+          Twitterで募集
           <% end %>
         </div>
       </div>
       <% end %>
   </div>
   <% if user_signed_in? %>
-  <% if @post.commented_by?(current_user) %>
-    <div class="row">
-      <%= render partial: 'comments_cards', collection: @post.commented_by(current_user), as: :comment  %>
-    </div>
-  <% elsif current_user?(@post.user) %>
-    <div class="row">
-      <%= render partial: 'comments_cards', collection: @post.comments, as: :comment %>
-    </div>
-  <% end %>
+    <% if @post.commented_by?(current_user) %>
+      <div class="row">
+        <%= render partial: 'comments_cards', collection: @post.commented_by(current_user), as: :comment  %>
+      </div>
+    <% elsif current_user?(@post.user) %>
+      <div class="row">
+        <%= render partial: 'comments_cards', collection: @post.comments, as: :comment %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="row">
