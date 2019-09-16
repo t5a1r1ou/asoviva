@@ -1,5 +1,19 @@
 defaults: &defaults
-  page_setting: 10
+  page: 10
+  post:
+    name_long: 8
+    description_digest: 12
+  user:
+    name_maximum: 8
+    profile_maximum: 140
+  ogp:
+    base_image_path: './app/assets/images/base.png'
+    gravity: 'center'
+    text_position: '0,0'
+    font: './app/assets/fonts/ipag.ttf'
+    font_size: 30
+    idention_count: 8
+    row_limit: 8
 development:
   <<: *defaults
 test:

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page_setting)
+    @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page)
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       redirect_to posts_url, notice: "#{@post.name}に行く予定を登録しました！"
     else
       @q = Post.ransack(params[:q])
-      @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page_setting)
+      @posts = @q.result.includes(user: { avatar_attachment: :blob }).includes(image_attachment: :blob).page(params[:page]).per(Settings.page)
       render :index
     end
   end

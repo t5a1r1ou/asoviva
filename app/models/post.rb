@@ -44,14 +44,6 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  def count_about
-    case count
-    when 1 then '1人'
-    when (2..4) then '2~4人'
-    else 'ワイワイ'
-    end
-  end
-
   def category_color
     case category_i18n
     when 'イベント' then 'light-blue lighten-1'
@@ -66,11 +58,11 @@ class Post < ApplicationRecord
   end
 
   def long_title_class
-    'name_long' if name.split(//).size > 8
+    'name_long' if name.split(//).size > Settings.post.name_long
   end
 
   def description_digest
-    description.truncate(12)
+    description.truncate(Settings.post.description_digest)
   end
 
   def stocked_by?(user)
