@@ -10,7 +10,7 @@
       <%= f.label :name %>
     </div>
     <div class="input-field col s4">
-      <%= f.select :gender, options_for_select(User.genders.keys) %>
+      <%= f.select :gender, User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
       <%= f.label :gender %>
     </div>
   </div>

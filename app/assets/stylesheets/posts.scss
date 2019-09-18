@@ -9,15 +9,6 @@ $tab: 601px;
   }
 }
 
-.cards-container {
-  @include tab {
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
 .card-container_post {
   margin: 0 1rem 1rem;
   @include tab {

@@ -13,7 +13,7 @@ $pc: 1000px;
 }
 
 @mixin pc {
-  @media only screen and (min-width: ($tab)) {
+  @media only screen and (min-width: ($pc)) {
     @content;
   }
 }
@@ -180,6 +180,16 @@ img {
 .tabs .indicator {
   background-color: #7986cb;
 }
+
+.cards-container {
+  @include tab {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 
 .pc_texts {
   @include tab {

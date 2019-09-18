@@ -1,11 +1,8 @@
 defaults: &defaults
   page: 10
   post:
-    name_long: 8
-    description_digest: 12
-  user:
-    name_maximum: 8
-    profile_maximum: 140
+    long_name: 8
+    long_description: 12
   ogp:
     base_image_path: './app/assets/images/base.png'
     gravity: 'center'

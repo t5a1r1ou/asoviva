@@ -19,7 +19,7 @@
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
       <div class="input-field col s6">
-        <%= f.select :area, options_for_select(User.areas.keys) %>
+        <%= f.select :area, User.areas_i18n.keys.map {|k| [User.areas_i18n[k], k]} %>
         <%= f.label :area %>
       </div>
     </div>
