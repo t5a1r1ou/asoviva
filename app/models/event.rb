@@ -16,9 +16,8 @@ class Event
       shikoku: 'ar0900',
       kyushu: 'ar1000'
     }
-    area_code = area_codes[area.to_sym]
     agent = Mechanize.new
-    page = agent.get("https://www.walkerplus.com/ranking/event/#{area_code}/1.html")
+    page = agent.get("https://www.walkerplus.com/ranking/event/#{area_codes[area.to_sym]}/1.html")
     @contents = page.search('div.m-mainlist-item')
   end
 end

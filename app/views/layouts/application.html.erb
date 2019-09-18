@@ -24,6 +24,9 @@
             <%= link_to 'ユーザー一覧', users_path %>
           </li>
           <li>
+            <%= link_to 'イベントを探す', events_path %>
+          </li>
+          <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           </li>
           <li>
@@ -51,6 +54,9 @@
           <% if user_signed_in? %>
           <li>
             <%= link_to 'ユーザー一覧', users_path %>
+          </li>
+          <li>
+            <%= link_to 'イベントを探す', events_path %>
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
