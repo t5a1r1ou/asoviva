@@ -1,6 +1,22 @@
 ---
 ja:
   enums:
+    user:
+      gender:
+        default: '設定しない'
+        men: '男性'
+        women: '女性'
+      area:
+        hokkaido: '北海道'
+        tohoku: '東北'
+        kanto: '関東'
+        koushinetsu: '甲信越'
+        tokai: '東海'
+        hokuriku: '北陸'
+        kansai: '関西'
+        chugoku: '中国'
+        shikoku: '四国'
+        kyushu: '九州'
     post:
       category:
         event: 'イベント'
@@ -11,12 +27,13 @@ ja:
         hokkaido: '北海道'
         tohoku: '東北'
         kanto: '関東'
-        chubu: '中部'
-        kinki: '近畿'
+        koushinetsu: '甲信越'
+        tokai: '東海'
+        hokuriku: '北陸'
+        kansai: '関西'
         chugoku: '中国'
         shikoku: '四国'
         kyushu: '九州'
-        okinawa: '沖縄'
   activerecord:
     errors:
       messages:

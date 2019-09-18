@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root 'static_pages#home'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -20,4 +18,12 @@ Rails.application.routes.draw do
     resource :stocks, only: %i[create destroy]
     resource :comments, only: %i[create destroy]
   end
+
+  resources :events, only: %i[index] do
+    post :result, on: :collection
+    post :event_form, on: :collection
+  end
+
+  get 'relationships/create'
+  get 'relationships/destroy'
 end

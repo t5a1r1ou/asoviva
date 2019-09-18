@@ -1,0 +1,16 @@
+<div class="card event-card">
+  <div class="card-image event_image_filter">
+    <%= image_tag image(content), class: "event_image" %>
+    <span class="card-title"><%= body(content) %></span>
+    <%= link_to event_form_events_path(name_value: body(content), description_value: description(content)), remote: true, method: :post, class: 'btn-floating halfway-fab waves-effect waves-light indigo edit_btn' do %>
+    <i class="material-icons">mode_edit</i>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <p><%= description(content) %></p>
+    <p>期間：<%= period(content) %></p>
+    <%= link_to event_link(content), target: :_blank do %>
+    詳しくはこちら
+    <% end %>
+  </div>
+</div>

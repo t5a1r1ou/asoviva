@@ -20,19 +20,20 @@ class Post < ApplicationRecord
     hokkaido: 0,
     tohoku: 1,
     kanto: 2,
-    chubu: 3,
-    kinki: 4,
-    chugoku: 5,
-    shikoku: 6,
-    kyushu: 7,
-    okinawa: 8
+    koushinetsu: 3,
+    tokai: 4,
+    hokuriku: 5,
+    kansai: 6,
+    chugoku: 7,
+    shikoku: 8,
+    kyushu: 9
   }
 
   enum category: {
-    event: 1,
-    sightseeing: 2,
-    drink: 3,
-    lunch: 4
+    event: 0,
+    sightseeing: 1,
+    drink: 2,
+    lunch: 3
   }
 
   belongs_to :user

@@ -30,28 +30,29 @@ class User < ApplicationRecord
   has_many :sent_comment_posts, through: :comments, source: :post
 
   enum gender: {
-    '設定しない' => 0,
-    '男性' => 1,
-    '女性' => 2
+    default: 0,
+    men: 1,
+    women: 2
   }
 
   enum area: {
-    '北海道' => 0,
-    '東北' => 1,
-    '関東' => 2,
-    '中部' => 3,
-    '近畿' => 4,
-    '中国' => 5,
-    '四国' => 6,
-    '九州' => 7,
-    '沖縄' => 8
+    hokkaido: 0,
+    tohoku: 1,
+    kanto: 2,
+    koushinetsu: 3,
+    tokai: 4,
+    hokuriku: 5,
+    kansai: 6,
+    chugoku: 7,
+    shikoku: 8,
+    kyushu: 9
   }
 
   def user_icon
     if avatar.attached?
       avatar.variant(combine_options: { resize: '200x200^', crop: '200x200+0+0', gravity: :center }).processed
     else
-      case gender
+      case gender_i18n
       when '設定しない' then 'dammy_not_selected.png'
       when '男性' then 'dammy_man.png'
       when '女性' then 'dammy_woman.png'
