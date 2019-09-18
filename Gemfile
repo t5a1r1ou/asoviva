@@ -19,7 +19,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'omniauth'
