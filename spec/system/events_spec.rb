@@ -13,6 +13,7 @@ RSpec.describe 'Events', type: :system do
     it 'イベントを検索して、選択したイベントの内容で投稿する', js: true do
       visit events_path
       click_button 'commit'
+      expect(page).to have_content 'mode_edit'
       name = find('.card-title', match: :first).text
       find('.edit_btn', match: :first).click
       find('.edit_btn', match: :first)

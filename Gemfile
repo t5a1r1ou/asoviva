@@ -10,16 +10,13 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'omniauth'
@@ -56,8 +53,6 @@ group :test do
   gem 'capybara', '~> 3.28'
   gem 'webdrivers'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'vcr'
-  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

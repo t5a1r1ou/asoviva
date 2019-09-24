@@ -11,6 +11,19 @@ defaults: &defaults
     font_size: 30
     idention_count: 8
     row_limit: 8
+  event:
+    area_code_list: {
+      hokkaido: 'ar0101',
+      tohoku: 'ar0200',
+      kanto: 'ar0300',
+      koushinetsu: 'ar0400',
+      tokai: 'ar0500',
+      hokuriku: 'ar0600',
+      kansai: 'ar0700',
+      chugoku: 'ar0800',
+      shikoku: 'ar0900',
+      kyushu: 'ar1000'
+    }
 development:
   <<: *defaults
 test:
