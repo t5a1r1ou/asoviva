@@ -108,5 +108,5 @@ Rails.application.configure do
 
   config.web_socket_server_url = 'wss://asoviva.herokuapp.com/cable'
 
-  config.action_cable.allowed_request_origins = [%r{https?://.*}]
+  config.action_cable.allowed_request_origins = ['https://asoviva.herokuapp.com', 'http://asoviva.herokuapp.com']
 end
