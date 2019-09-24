@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :posts, except: :new do
     resource :stocks, only: %i[create destroy]
     resource :comments, only: %i[create destroy]
+    get 'rooms/show', on: :collection
   end
 
   resources :events, only: %i[index] do
@@ -26,4 +27,6 @@ Rails.application.routes.draw do
 
   get 'relationships/create'
   get 'relationships/destroy'
+
+  mount ActionCable.server => '/cable'
 end
