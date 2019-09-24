@@ -106,5 +106,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_cable.allowed_request_origins = [ /https?:\/\/.*/ ]
+  config.action_cable.allowed_request_origins = [%r{https?://.*}]
 end
