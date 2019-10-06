@@ -5,5 +5,7 @@ test:
   adapter: async
 
 production:
-  adapter: redis
-  url: ENV["REDIS_URL"]
+  # なぜか本番でredis動かない…
+  # adapter: redis
+  # url: ENV["REDIS_URL"]
+  adapter: async
