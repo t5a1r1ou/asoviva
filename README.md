@@ -1,5 +1,5 @@
 # asoviva! 気軽に遊びに誘えるサービス
-[asoviva!](https://i.imgur.com/QF6kvRM.png)
+![asoviva!](https://i.imgur.com/QF6kvRM.png)
 asoviva!は自分が遊びたい場所、遊びたい日を登録して、遊び相手を探せるサービスです。
 他のSNSと違って遊び相手を探すことに特化しているため、気兼ねなく登録ができます。
 
