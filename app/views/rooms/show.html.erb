@@ -1,7 +1,9 @@
-<h1>チャットルーム</h1>
-<div id="messages">
-  <%= render @messages %>
-</div>
+<div class="container">
+  <h1><%= @post.name %>に行きたいチャット</h1>
+  <div id="messages">
+    <%= render @messages %>
+  </div>
 
-<%= label nil, nil, 'Say something:' %>
-<%= text_field nil, nil, 'data-behavior': 'room_speaker', id: "speaker" %>
+  <%= label nil, nil, 'Say something:' %>
+  <%= text_field nil, nil, 'data-behavior': 'room_speaker', id: "speaker" %>
+</div>

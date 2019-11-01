@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :posts, except: :new do
     resource :stocks, only: %i[create destroy]
     resource :comments, only: %i[create destroy]
-    get 'rooms/show', on: :collection
+    get 'rooms/show', on: :member
   end
 
   resources :events, only: %i[index] do
