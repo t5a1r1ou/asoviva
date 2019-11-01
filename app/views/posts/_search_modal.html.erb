@@ -3,29 +3,29 @@
     <div class="row">
       <h4>投稿検索</h4>
       <%= search_form_for @q, class: "col s12" do |f| %>
-      <div class="row">
-        <div class="input-field col s12">
-          <%= f.search_field :name_cont, id: 'input_name' %>
-          <%= f.label :name_cont, '行きたいところで検索' %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.search_field :name_cont, id: 'input_name' %>
+            <%= f.label :name_cont, '行きたいところで検索' %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <%= f.text_field :date_eq, class: "datepicker" %>
-          <%= f.label :date_eq, '暇な日で検索' %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_field :date_eq, class: "datepicker" %>
+            <%= f.label :date_eq, '暇な日で検索' %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <%= f.select :area_eq, Post.areas.map { |k, v| [Post.areas_i18n[k], v] }, :include_blank => '指定なし' %>
-          <%= f.label :area_eq, 'エリアで絞り込み' %>
+        <div class="row">
+          <div class="input-field col s6">
+            <%= f.select :area_eq, Post.areas.map { |k, v| [Post.areas_i18n[k], v] }, :include_blank => '指定なし' %>
+            <%= f.label :area_eq, 'エリアで絞り込み' %>
+          </div>
+          <div class="input-field col s6">
+            <%= f.select :category_eq, Post.categories.map { |k, v| [Post.categories_i18n[k], v] }, :include_blank => '指定なし' %>
+            <%= f.label :category_eq, 'カテゴリで絞り込み' %>
+          </div>
         </div>
-        <div class="input-field col s6">
-          <%= f.select :category_eq, Post.categories.map { |k, v| [Post.categories_i18n[k], v] }, :include_blank => '指定なし' %>
-          <%= f.label :category_eq, 'カテゴリで絞り込み' %>
-        </div>
-      </div>
-      <%= f.submit '検索', class: "btn-large wave-effect waves-light amber darken-1" %>
+        <%= f.submit '検索', class: "btn-large wave-effect waves-light amber darken-1" %>
       <% end %>
     </div>
   </div>

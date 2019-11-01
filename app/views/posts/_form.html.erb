@@ -1,38 +1,38 @@
 <div class="row">
   <h4><%= title %></h4>
   <%= form_with url: path_default, class: "col s12", local: true, model: post do |f| %>
-  <div class="row">
-    <div class="input-field col s8">
-      <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 20  %>
-      <%= f.label :name %>
+    <div class="row">
+      <div class="input-field col s8">
+        <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 20  %>
+        <%= f.label :name %>
+      </div>
+      <div class="input-field col s4">
+        <%= f.select :category, Post.categories_i18n.keys.map {|k| [Post.categories_i18n[k], k]}  %>
+        <%= f.label :category_i18n %>
+      </div>
     </div>
-    <div class="input-field col s4">
-      <%= f.select :category, Post.categories_i18n.keys.map {|k| [Post.categories_i18n[k], k]}  %>
-      <%= f.label :category_i18n %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_area :description, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140 %>
+        <%= f.label :description %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.text_area :description, class: "materialize-textarea", id: 'area_description',  rows: 5, :'data-length' => 140 %>
-      <%= f.label :description %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :date, class: "datepicker" %>
+        <%= f.label :date %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.number_field :count, value: 1 %>
+        <%= f.label :count %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s6">
-      <%= f.text_field :date, class: "datepicker" %>
-      <%= f.label :date %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.select :area, Post.areas_i18n.keys.map {|k| [Post.areas_i18n[k], k]} %>
+        <%= f.label :area_i18n %>
+      </div>
     </div>
-    <div class="input-field col s6">
-      <%= f.number_field :count, value: 1 %>
-      <%= f.label :count %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.select :area, Post.areas_i18n.keys.map {|k| [Post.areas_i18n[k], k]} %>
-      <%= f.label :area_i18n %>
-    </div>
-  </div>
-  <%= f.submit btn_text, class: "btn-large wave-effect waves-light amber darken-1" %>
+    <%= f.submit btn_text, class: "btn-large wave-effect waves-light amber darken-1" %>
   <% end %>
 </div>

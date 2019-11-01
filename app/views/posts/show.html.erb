@@ -7,9 +7,10 @@
     <div>
       <div class="chip chip_position white-text <%= @post.category_color %>"><%= @post.category_i18n %></div>
       <% @contents = capture do %>
-      <div class="name-icon_box_post">
-        <%= image_tag @post.user.user_icon, class: "icon_post" %><p class="black-text"><%= @post.user.name %></p>
-      </div>
+        <div class="name-icon_box_post">
+          <%= image_tag @post.user.user_icon, class: "icon_post" %>
+          <p class="black-text"><%= @post.user.name %></p>
+        </div>
       <% end %>
       <%= link_to @contents, user_path(@post.user) %>
       <div class="container">
@@ -27,13 +28,13 @@
     <p class="indigo-text"><%= Post.human_attribute_name(:description) %></p>
     <p><%= @post.description.presence || 'とりあえず遊びたーい' %></p>
     <ul class="collection">
-        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:date) %></span><span class="collection_content"><%= @post.date %></span></li>
-        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area_i18n) %></span><span class="collection_content"><%= @post.area_i18n %></span></li>
-        <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:count) %></span><span class="collection_content"><%= @post.count %>人</span></li>
-      </ul>
-      <% if not current_user?(@post.user) %>
-        <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
-      <% else %>
+      <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:date) %></span><span class="collection_content"><%= @post.date %></span></li>
+      <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:area_i18n) %></span><span class="collection_content"><%= @post.area_i18n %></span></li>
+      <li class="collection-item flex"><span class="collection_title grey-text"><%= Post.human_attribute_name(:count) %></span><span class="collection_content"><%= @post.count %>人</span></li>
+    </ul>
+    <% if not current_user?(@post.user) %>
+      <%= render partial: 'posts/comment_btn', locals: { post: @post, user: @post.user } %>
+    <% else %>
       <div class="flex edit_btns">
         <div>
           <%= link_to '編集', edit_post_path(@post), class: "waves-effect waves-light btn amber darken-1" %>
@@ -43,11 +44,11 @@
         </div>
         <div>
           <%= link_to @tweet_url, target: ["_blank"], class: "waves-effect waves-light btn blue" do %>
-          Twitterで募集
+            Twitterで募集
           <% end %>
         </div>
       </div>
-      <% end %>
+    <% end %>
   </div>
   <% if user_signed_in? %>
     <% if @post.commented_by?(current_user) %>
@@ -60,7 +61,6 @@
       </div>
     <% end %>
   <% end %>
-
   <div class="row">
     <%= link_to "戻る", :back %>
   </div>
