@@ -5,5 +5,6 @@ class RoomsController < ApplicationController
 
   def show
     @messages = Message.all
+    @post = Post.find(params[:id])
   end
 end

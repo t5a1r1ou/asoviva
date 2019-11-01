@@ -4,7 +4,7 @@
   <div class="name-icon_box_user show_user">
     <div>
       <h3><%= @user.name %></h3>
-      <p class="grey-text user_area_text">エリア：<%= @user.area %></p>
+      <p class="grey-text user_area_text">エリア：<%= @user.area_i18n %></p>
       <%= render partial: 'users/follow_btn', locals: { user: @user } %>
     </div>
     <%= image_tag @user.user_icon, class: "icon_user" %>
