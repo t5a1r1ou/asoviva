@@ -2,12 +2,12 @@
   <% if !current_user?(user) %>
     <% if user.followed_by?(current_user) %>
       <div class="chip chip_position white-text grey btn_follow">
-          <%= link_to 'フォロー中', user_relationships_path(user.id), method: :delete, class: "white-text", remote: true %>
+        <%= link_to 'フォロー中', user_relationships_path(user.id), method: :delete, class: "white-text", remote: true %>
       </div>
     <% else %>
-    <div class="chip chip_position white-text indigo btn_follow">
+      <div class="chip chip_position white-text indigo btn_follow">
         <%= link_to 'フォローする', user_relationships_path(user.id), method: :post, class: "white-text", remote: true %>
-    </div>
+      </div>
     <% end %>
   <% end %>
 </div>

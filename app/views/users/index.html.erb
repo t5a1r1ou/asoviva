@@ -31,9 +31,9 @@
   </div>
   <div class="cards-container" id="users">
     <% unless @users.empty? %>
-    <%= render partial: 'users/users_cards', collection: @users, as: :user %>
+      <%= render partial: 'users/users_cards', collection: @users, as: :user %>
     <% else %>
-    <p>まだユーザーがいません</p>
+      <p>まだユーザーがいません</p>
     <% end %>
   </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="row">
   <h4>イベント検索</h4>
   <%= form_with url: result_events_path, class: "col s12" do |f| %>
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.select :area, Post.areas_i18n.keys.map {|k| [Post.areas_i18n[k], k]} %>
-      <%= f.label 'エリア' %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.select :area, Post.areas_i18n.keys.map {|k| [Post.areas_i18n[k], k]} %>
+        <%= f.label 'エリア' %>
+      </div>
     </div>
-  </div>
-  <%= f.submit '検索する', class: "btn-large wave-effect waves-light amber darken-1" %>
+    <%= f.submit '検索する', class: "btn-large wave-effect waves-light amber darken-1" %>
   <% end %>
 </div>
 <div class="row container">

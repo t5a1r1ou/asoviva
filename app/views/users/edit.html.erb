@@ -3,45 +3,40 @@
 <div class="row fix-mb">
   <h4>プロフィール設定</h4>
   <%= form_with url: user_path, class: "col s12", local: true, model: @user do |f| %>
-
-  <div class="row">
-    <div class="input-field col s8">
-      <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 8 %>
-      <%= f.label :name %>
+    <div class="row">
+      <div class="input-field col s8">
+        <%= f.text_field :name, class: 'validate', id: 'input_name', :'data-length' => 8 %>
+        <%= f.label :name %>
+      </div>
+      <div class="input-field col s4">
+        <%= f.select :gender, User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
+        <%= f.label :gender %>
+      </div>
     </div>
-    <div class="input-field col s4">
-      <%= f.select :gender, User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
-      <%= f.label :gender %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_area :profile, class: "materialize-textarea validate", id: 'area_description',  rows: 5, :'data-length' => 140, placeholder: "プロフィールを設定してください" %>
+        <%= f.label :profile %>
+      </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.text_area :profile, class: "materialize-textarea validate", id: 'area_description',  rows: 5, :'data-length' => 140, placeholder: "プロフィールを設定してください" %>
-      <%= f.label :profile %>
-    </div>
-  </div>
-
-  <div class="row">
-    <%= f.label :avatar %>
+    <div class="row">
+      <%= f.label :avatar %>
       <div class="file-field input-field col s12">
-      <div class="btn indigo">
-        <span>選択</span>
-        <%= f.file_field :avatar %>
-      </div>
-      <div class="file-path-wrapper">
-        <% if @user.avatar.attached? %>
-          <input class="file-path validate" type="text" placeholder="変更しない場合は空欄のまま">
-        <% else %>
-          <input class="file-path validate" type="text">
-        <% end %>
+        <div class="btn indigo">
+          <span>選択</span>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="file-path-wrapper">
+          <% if @user.avatar.attached? %>
+            <input class="file-path validate" type="text" placeholder="変更しない場合は空欄のまま">
+          <% else %>
+            <input class="file-path validate" type="text">
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-
-  <%= f.submit '登録', class: "btn-large wave-effect waves-light amber darken-1 fix-mb" %>
+    <%= f.submit '登録', class: "btn-large wave-effect waves-light amber darken-1 fix-mb" %>
   <% end %>
-
   <div class="row">
     <%= link_to "戻る", :back %>
   </div>
