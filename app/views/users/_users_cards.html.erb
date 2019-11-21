@@ -8,7 +8,7 @@
             <%= image_tag user.user_icon, class: "icon_users" %>
             <div class="users_box">
               <span class="users_name"><%= user.name %></span>
-              <p class="users_area_text grey-text"><%= user.area %></p>
+              <p class="users_area_text grey-text"><%= user.area_i18n %></p>
             </div>
           </div>
           <% if current_user.followed_by?(user) %>
