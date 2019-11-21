@@ -13,8 +13,8 @@ RSpec.describe 'Comments', type: :system do
     find("#comments-form_#{post.id}").find('.comment-btn').click
   end
 
-  context '15文字以内でコメントが送られた時' do
-    it 'コメントを送るとコメント済みの画面にコメントした投稿とコメントが表示される', js: true do
+  context '15文字以内でコメントが送られた時', js: true do
+    it 'コメントを送るとコメント済みの画面にコメントした投稿とコメントが表示される' do
       fill_in 'comment[body]', with: '何それ行きた'
       expect do
         click_button 'commit'
@@ -26,8 +26,8 @@ RSpec.describe 'Comments', type: :system do
     end
   end
 
-  context '15文字より多い文字数のコメントが送られた時' do
-    it 'コメントを送ると元の画面がレンダリングされ、アラートが表示される', js: true do
+  context '15文字より多い文字数のコメントが送られた時', js: true do
+    it 'コメントを送ると元の画面がレンダリングされ、アラートが表示される' do
       fill_in 'comment[body]', with: '何何何何何何何何何何何何何何何何'
       expect do
         click_button 'commit'
