@@ -4,6 +4,8 @@
       <a class="waves-effect waves-light btn-large modal-trigger grey comment-btn">リクエスト済み</a>
     <% else %>
     <a class="waves-effect waves-light btn-large modal-trigger indigo comment-btn" href="#modal1">行きたい！</a>
+    <p class="red-text">※「行きたいリクエスト」は一度送るとキャンセル、修正が出来ません。<br>
+    このリクエストは相手にしか見えません。</p>
     <div id="modal1" class="modal">
       <div class="modal-content">
         <%= form_with model: @comment, url: post_comments_path(post.id), class: "col s12", local: true, method: :post do |f| %>
