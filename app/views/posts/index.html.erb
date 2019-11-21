@@ -9,6 +9,9 @@
   </div>
 <% end %>
 <div class="container">
+  <h3>投稿一覧</h3>
+  <p>キープしても相手には通知されません。<br>
+    キープした投稿は自分のプロフィール画面でみることが出来ます。</p>
   <div class="cards-container">
     <% if not @posts.empty? %>
       <%= render partial: "posts_cards", collection: @posts, as: :post, locals: { bool: true } %>
